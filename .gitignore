@@ -1,0 +1,6 @@
+*.lps
+*.lts
+*.trc
+*.pbes
+jittyc_*.cpp
+*.log
