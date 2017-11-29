@@ -1,0 +1,47 @@
+addons:
+  apt:
+    packages:
+      - xzdec
+
+install:
+  - curl -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O
+  - tar -xf install-tl-unx.tar.gz
+  - cd install-tl-*
+  - |-
+    {
+      echo 'selected_scheme scheme-minimal';
+      echo 'TEXDIR /usr/local/texlive/2017';
+      echo 'TEXMFCONFIG ~/.texlive2017/texmf-config';
+      echo 'TEXMFHOME ~/texmf';
+      echo 'TEXMFLOCAL /usr/local/texlive/texmf-local';
+      echo 'TEXMFSYSCONFIG /usr/local/texlive/2017/texmf-config';
+      echo 'TEXMFSYSVAR /usr/local/texlive/2017/texmf-var';
+      echo 'TEXMFVAR ~/.texlive2017/texmf-var';
+      echo 'binary_x86_64-linux 1';
+      echo 'instopt_adjustpath 0';
+      echo 'instopt_adjustrepo 1';
+      echo 'instopt_letter 0';
+      echo 'instopt_portable 0';
+      echo 'instopt_write18_restricted 1';
+      echo 'tlpdbopt_autobackup 1';
+      echo 'tlpdbopt_backupdir tlpkg/backups';
+      echo 'tlpdbopt_create_formats 1';
+      echo 'tlpdbopt_desktop_integration 1';
+      echo 'tlpdbopt_file_assocs 1';
+      echo 'tlpdbopt_generate_updmap 0';
+      echo 'tlpdbopt_install_docfiles 1';
+      echo 'tlpdbopt_install_srcfiles 1';
+      echo 'tlpdbopt_post_code 1';
+      echo 'tlpdbopt_sys_bin /usr/local/bin';
+      echo 'tlpdbopt_sys_info /usr/local/share/info';
+      echo 'tlpdbopt_sys_man /usr/local/share/man';
+      echo 'tlpdbopt_w32_multi_user 1';
+    } > texlive.profile
+  - sudo ./install-tl --profile=texlive.profile
+  - cd -
+  - export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
+  - tlmgr init-usertree
+  - sudo "$(which tlmgr)" install texliveonfly xetex
+
+script:
+  - sudo env PATH="$PATH" texliveonfly -c xelatex presentation.tex
