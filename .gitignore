@@ -1,3 +1,15 @@
+# LaTeX
+*.aux
+*.lb
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.synctex.gz
+*.toc
+
+# mCRL2
 *.lps
 *.lts
 *.trc
