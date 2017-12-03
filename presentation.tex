@@ -181,16 +181,15 @@
   \end{frame}
 
   \begin{frame}{Regular Formulae}
-    \begin{itemize}
-      \item based on action formulae
-    \end{itemize}
+    Regular formulae extend action formulae, allowing sequences of actions in modalities.
 
     \begin{align*}
       R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
     \end{align*}
 
+    % TODO: Separate definitions from examples.
     \begin{itemize}
-      \item $\epsilon$ represents the empty sequence of actions, so $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$.
+      \item $\epsilon$ is the empty sequence of actions, so $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$.
       \item $R_1\cdot{R_2}$ represents the concatenation of $R_1$ and $R_2$, i.e. $\langle{a}\cdot{b}\cdot{c}\rangle{true}$ is the same as $\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$.
       \item $R_1+R_2$ denotes the union of  $R_1$ and $R_2$, i.e. $[a\cdot{b} + c\cdot{d}]false$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible.
     \end{itemize}
