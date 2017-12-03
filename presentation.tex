@@ -215,4 +215,52 @@
       \end{itemize}
     \end{exampleblock}
   \end{frame}
+
+  \begin{frame}{Regular Formulae}
+    Two other commonly used formulae are the \textit{always} and \textit{eventually} modalities.
+
+    \begin{align*}
+      \square\phi = [true^*]\phi \qquad\qquad    \diamond\phi = \langle{true^*}\rangle\phi
+    \end{align*}
+
+    \begin{itemize}
+      \item $\square\phi$ means that $\phi$ holds in all reachable states.
+      \item $\diamond\phi$ says that there is a sequence of actions after which $\phi$ holds.
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Regular Formulae}
+    \begin{align*}
+      \square\phi \implies \text{Something bad will never happen.}
+    \end{align*}
+
+    \begin{exampleblock}{Example}
+      We have a program with a critical region and two actions, \textit{enter} and \textit{leave}.
+
+      \begin{align*}
+        [true^*\cdot enter \cdot \overline{leave}^* \cdot enter]false
+      \end{align*}
+
+      It is impossible to enter twice in a row. There has to be a \textit{leave} action inbetween two \textit{enter} actions.
+    \end{exampleblock}
+  \end{frame}
+
+  \begin{frame}{Regular Formulae}
+    \begin{align*}
+      \diamond\phi \implies \text{Something good will happen.}
+    \end{align*}
+
+    \begin{exampleblock}{Example}
+      \begin{align*}
+        [true^*\cdot send]\langle true^* \cdot receive \rangle false
+      \end{align*}
+
+      Everytime a message is sent, it can eventually be received.
+    \end{exampleblock}
+  \end{frame}
+
+  \begin{frame}{}
+  \end{frame}
+  \begin{frame}{}
+  \end{frame}
 \end{document}
