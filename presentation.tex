@@ -9,6 +9,10 @@
 
 \usepackage{upgreek}
 
+\usepackage{tkz-graph}
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
+\tikzset{edge/.style = {->,> = latex'}}
+
 \hypersetup
 {
   pdftitle   = {Process Calculi for Concurrency},
@@ -31,4 +35,57 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Diamond \& Box Modalities}
+    \resizebox{\textwidth}{!}{
+      \renewcommand{\arraystretch}{2}
+      \begin{tabular}{l c c c c}
+        &
+
+        \begin{tikzpicture}
+          \node[vertex] (a) at (0.75, 1.25) {};
+          \node[vertex] [label=left:{$\phi$}] (b) at (0, 0) {};
+          \node[vertex] [label=right:{$\neg\phi$}] (c) at (1.5, 0) {};
+
+          \draw[edge] (.75, 1.75) to (a);
+          \draw[edge] (a) to node [left] {$a$} (b);
+          \draw[edge] (a) to node [right] {$a$} (c);
+        \end{tikzpicture}
+
+        &
+
+        \begin{tikzpicture}
+          \node[vertex] (a) at (0, 1.25) {};
+          \node at (0, -0.175) {};
+
+          \draw[edge] (0, 1.75) to (a);
+        \end{tikzpicture}
+
+        &
+
+        \begin{tikzpicture}
+          \node[vertex] (a) at (0, 1.25) {};
+          \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
+
+          \draw[edge] (0, 1.75) to (a);
+          \draw[edge] (a) to node [left] {$a$} (b);
+        \end{tikzpicture}
+
+        &
+
+        \begin{tikzpicture}
+          \node[vertex] (a) at (0, 1.25) {};
+          \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
+
+          \draw[edge] (0, 1.75) to (a);
+          \draw[edge] (a) to node [left] {$a$} (b);
+        \end{tikzpicture}
+
+        \\
+
+        $\langle{}a\rangle{}\phi$ & valid   & invalid & valid & invalid \\
+
+        $[a]\phi$                 & invalid & valid   & valid & invalid \\
+      \end{tabular}
+    }
+  \end{frame}
 \end{document}
