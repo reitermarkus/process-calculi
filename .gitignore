@@ -8,6 +8,9 @@
 *.snm
 *.synctex.gz
 *.toc
+*.watcher_pid
+*.fls
+*.fdb_latexmk
 
 # mCRL2
 *.lps
