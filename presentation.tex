@@ -129,9 +129,9 @@
 
         \\
 
-        $\langle{}a\rangle{}\phi$ & valid   & invalid & valid & invalid \\
+        $\langle{}a\rangle{}\phi$ & \highlight{valid} & \alert{invalid}   & \highlight{valid} & \alert{invalid} \\
 
-        $[a]\phi$                 & invalid & valid   & valid & invalid \\
+        $[a]\phi$                 & \alert{invalid}   & \highlight{valid} & \highlight{valid} & \alert{invalid} \\
       \end{tabular}
     }
   \end{frame}
@@ -192,22 +192,22 @@
     \end{align*}
 
     \begin{itemize}
-      \item \highlight{$\epsilon$} is the empty sequence of actions.
-      \item \highlight{$R_1\cdot{R_2}$} represents the concatenation of \highlight{$R_1$} and \highlight{$R_2$}.
-      \item \highlight{$R_1+R_2$} denotes the union of  \highlight{$R_1$} and \highlight{$R_2$}.
-      \item \highlight{$R^*$} denotes zero ore more repetitions.
-      \item \highlight{$R^+$} denotes one ore more repetitions.
+      \item $\epsilon$ is the empty sequence of actions.
+      \item $R_1\cdot{R_2}$ represents the concatenation of $R_1$ and $R_2$.
+      \item $R_1+R_2$ denotes the union of  $R_1$ and $R_2$.
+      \item $R^*$ denotes zero ore more repetitions.
+      \item $R^+$ denotes one ore more repetitions.
     \end{itemize}
   \end{frame}
 
   \begin{frame}[t]{Regular Formulae}
     \begin{exampleblock}{Examples}
       \begin{itemize}
-        \item \highlight{$[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$}, so one can always perform no action, and remain in the same state.
-        \item \highlight{$\langle{a}\cdot{b}\cdot{c}\rangle{true}$} is the same as \highlight{$\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$}.
-        \item \highlight{$[a\cdot{b} + c\cdot{d}]false$} means that neither the sequence \highlight{$a\cdot{b}$} nor \highlight{$c\cdot{d}$} is possible.
-        \item \highlight{$\langle{a^*}\rangle{true}$} expresses that any sequence of \highlight{$a$} actions is possible.
-        \item \highlight{$[a^+]\phi$} says that \highlight{$\phi$} must hold in any state reachable by one or more \highlight{$a$} actions.
+        \item $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$, so one can always perform no action, and remain in the same state.
+        \item $\langle{a}\cdot{b}\cdot{c}\rangle{true}$ is the same as $\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$.
+        \item $[a\cdot{b} + c\cdot{d}]false$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible.
+        \item $\langle{a^*}\rangle{true}$ expresses that any sequence of $a$ actions is possible.
+        \item $[a^+]\phi$ says that $\phi$ must hold in any state reachable by one or more $a$ actions.
       \end{itemize}
     \end{exampleblock}
   \end{frame}
