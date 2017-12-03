@@ -8,6 +8,7 @@
 \defaultfontfeatures{Ligatures=TeX}
 
 \usepackage{upgreek}
+\usepackage{setspace}
 
 \usepackage{tkz-graph}
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
@@ -33,6 +34,17 @@
       \item µ-Calculus
       \item mCRL2
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Syntax}
+    The set of µ-calculus formulas, $\mathcal{F}$ is the smallest set containing: \\[12pt]
+    \begin{spacing}{1.2}
+      $p$ and $\neg p$ for all propositions $p \in Prop$ \\
+      $X$ for all variables $X \in Var$ \\
+      $\phi \lor \psi$ and $\phi \land \psi$, if $\phi$, $\psi$ are formulas in $\mathcal{F}$ \\
+      ($a$)$\phi$ and [$a$]$\psi$, if $a \in Act$ is an action and $\phi$ is a formual in  $\mathcal{F}$ \\
+      $\mu X. \phi$ and $v X. \phi$, if $X \in Var$ is a variable and $\phi \in \mathcal{F}$ is a formula. \\
+    \end{spacing}
   \end{frame}
 
   \begin{frame}{Diamond \& Box Modalities}
