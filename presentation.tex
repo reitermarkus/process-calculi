@@ -38,13 +38,14 @@
 
   \begin{frame}{Syntax}
     The set of µ-calculus formulas, $\mathcal{F}$ is the smallest set containing: \\[12pt]
-    \begin{spacing}{1.2}
-      $p$ and $\neg p$ for all propositions $p \in Prop$ \\
-      $X$ for all variables $X \in Var$ \\
-      $\phi \lor \psi$ and $\phi \land \psi$, if $\phi$, $\psi$ are formulas in $\mathcal{F}$ \\
-      ($a$)$\phi$ and [$a$]$\psi$, if $a \in Act$ is an action and $\phi$ is a formual in  $\mathcal{F}$ \\
-      $\mu X. \phi$ and $v X. \phi$, if $X \in Var$ is a variable and $\phi \in \mathcal{F}$ is a formula. \\
-    \end{spacing}
+    \begin{itemize}
+      \item $p$ and $\neg p$ for all propositions $p \in Prop$ \\
+      \item $X$ for all variables $X \in Var$ \\
+      \item $\phi \lor \psi$ and $\phi \land \psi$, if $\phi$, $\psi$ are formulas in $\mathcal{F}$
+      \item ($a$)$\phi$ and [$a$]$\psi$, if $a \in Act$ is an action and $\phi$ is a formual in  $\mathcal{F}$
+      \item $\mu X. \phi$ and $v X. \phi$, if $X \in Var$ is a variable and $\phi \in \mathcal{F}$ is a formula.
+    \end{itemize}
+
   \end{frame}
 
   \begin{frame}{Diamond \& Box Modalities}
@@ -108,7 +109,7 @@
 
     \begin{align*}
       \langle{af}\rangle\phi = \bigvee_{\alpha \in af} \langle\alpha\rangle\phi
-      \ \ \ \ \ \ \ \ 
+      \ \ \ \ \ \ \ \
       [af]\phi = \bigwedge_{\alpha \in af} [\alpha]\phi
     \end{align*}
   \end{frame}
