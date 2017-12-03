@@ -16,7 +16,10 @@
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
 
-\newcommand{\highlight}[1]{{\usebeamercolor[fg]{example text}#1}}
+\definecolor{red}{RGB}{200,50,0}
+\definecolor{green}{RGB}{0,150,60}
+\newcommand*{\red}{\color{red}}
+\newcommand*{\green}{\color{green}}
 
 \hypersetup
 {
@@ -84,6 +87,8 @@
 
   \begin{frame}{Diamond \& Box Modalities}
     \resizebox{\textwidth}{!}{
+      \newcommand{\valid}{{\color{green} valid}}
+      \newcommand{\invalid}{{\color{red} invalid}}
       \renewcommand{\arraystretch}{2}
       \begin{tabular}{l c c c c}
         &
@@ -129,9 +134,9 @@
 
         \\
 
-        $\langle{}a\rangle{}\phi$ & \highlight{valid} & \alert{invalid}   & \highlight{valid} & \alert{invalid} \\
+        $\langle{}a\rangle{}\phi$ & \valid   & \invalid & \valid & \invalid \\
 
-        $[a]\phi$                 & \alert{invalid}   & \highlight{valid} & \highlight{valid} & \alert{invalid} \\
+        $[a]\phi$                 & \invalid & \valid   & \valid & \invalid \\
       \end{tabular}
     }
   \end{frame}
@@ -186,9 +191,7 @@
     Regular formulae extend action formulae, allowing sequences of actions in modalities.
 
     \begin{align*}
-      \highlight{
-        R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
-      }
+      R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
     \end{align*}
 
     \begin{itemize}
@@ -200,7 +203,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}[t]{Regular Formulae}
+  \begin{frame}{Regular Formulae}
     \begin{exampleblock}{Examples}
       \begin{itemize}
         \item $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$, so one can always perform no action, and remain in the same state.
