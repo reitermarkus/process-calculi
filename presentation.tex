@@ -16,6 +16,8 @@
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
 
+\newcommand{\highlight}[1]{{\usebeamercolor[fg]{example text}#1}}
+
 \hypersetup
 {
   pdftitle   = {Process Calculi for Concurrency},
@@ -184,14 +186,29 @@
     Regular formulae extend action formulae, allowing sequences of actions in modalities.
 
     \begin{align*}
-      R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
+      \highlight{
+        R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
+      }
     \end{align*}
 
-    % TODO: Separate definitions from examples.
     \begin{itemize}
-      \item $\epsilon$ is the empty sequence of actions, so $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$.
-      \item $R_1\cdot{R_2}$ represents the concatenation of $R_1$ and $R_2$, i.e. $\langle{a}\cdot{b}\cdot{c}\rangle{true}$ is the same as $\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$.
-      \item $R_1+R_2$ denotes the union of  $R_1$ and $R_2$, i.e. $[a\cdot{b} + c\cdot{d}]false$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible.
+      \item \highlight{$\epsilon$} is the empty sequence of actions.
+      \item \highlight{$R_1\cdot{R_2}$} represents the concatenation of \highlight{$R_1$} and \highlight{$R_2$}.
+      \item \highlight{$R_1+R_2$} denotes the union of  \highlight{$R_1$} and \highlight{$R_2$}.
+      \item \highlight{$R^*$} denotes zero ore more repetitions.
+      \item \highlight{$R^+$} denotes one ore more repetitions.
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}[t]{Regular Formulae}
+    \begin{exampleblock}{Examples}
+      \begin{itemize}
+        \item \highlight{$[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$}, so one can always perform no action, and remain in the same state.
+        \item \highlight{$\langle{a}\cdot{b}\cdot{c}\rangle{true}$} is the same as \highlight{$\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$}.
+        \item \highlight{$[a\cdot{b} + c\cdot{d}]false$} means that neither the sequence \highlight{$a\cdot{b}$} nor \highlight{$c\cdot{d}$} is possible.
+        \item \highlight{$\langle{a^*}\rangle{true}$} expresses that any sequence of \highlight{$a$} actions is possible.
+        \item \highlight{$[a^+]\phi$} says that \highlight{$\phi$} must hold in any state reachable by one or more \highlight{$a$} actions.
+      \end{itemize}
+    \end{exampleblock}
   \end{frame}
 \end{document}
