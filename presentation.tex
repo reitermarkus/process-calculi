@@ -76,11 +76,12 @@
   \end{frame}
 
   \begin{frame}{Labelled Trainsiton Systems}
-    Given a labelled transition system $(S, R, V)$: \\[12pt]
+    LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
     \begin{itemize}
       \item $S$ is a set of states \\
-      \item $R$ maps to each label $a$ a binary relation on $S$ \\
-      \item $V:P\rightarrow 2^{S}$, maps to each proposition $p \in P$ the set of states where the proposition is true
+      \item $A$ is a set of actions \\
+      \item $\to \subseteq S \times A \times S$ is a transition relation \\
+      \item $s_0 \in S$ is the initial state \\
     \end{itemize}
   \end{frame}
 
