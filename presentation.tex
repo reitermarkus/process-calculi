@@ -134,16 +134,50 @@
     }
   \end{frame}
 
+  \begin{frame}{Regular Formulae}
+    \begin{itemize}
+      \item allow more than a single action in a modality
+      \item useful for expressing that after two or more \\
+            arbitrary actions, a specific action must happen
+      \item based on action formulae
+    \end{itemize}
+
+    \begin{exampleblock}{A more concrete example:}
+      After two \textit{\textbf{receive}} actions, a \textit{\textbf{send}} action must follow.
+    \end{exampleblock}
+  \end{frame}
+
   \begin{frame}{Action Formulae}
+    An action formula $af$ defines a set of multi-actions.
+
     \begin{align*}
       af ::= \alpha\ |\ true\ |\ false\ |\ \overline{af}\ |\ af\ \cap\ af\ |\ af\ \cup\ af
     \end{align*}
 
+    \begin{itemize}
+      \item $\alpha$ represents the set with exactly the multi-action $\alpha$.
+      \item $true$ is the set of all multi-actions.
+      \item $false$ is the empty set.
+      \item $\overline{af}$ denotes the complement of the set $af$.
+      \item $\cup$ and $\cap$ denote union and intersection, respectively.
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Action Formulae}
+    $af$ being a set of multi-actions, modalities with action formulae are defined like this:
+
     \begin{align*}
       \langle{af}\rangle\phi = \bigvee_{\alpha \in af} \langle\alpha\rangle\phi
-      \ \ \ \ \ \ \ \
+      \qquad\qquad
       [af]\phi = \bigwedge_{\alpha \in af} [\alpha]\phi
     \end{align*}
+
+    \begin{exampleblock}{Example}
+      \begin{itemize}
+        \item $\langle\overline{a}\rangle\langle{b \cup c}\rangle{true}$ means an action other than $a$ can be done, followed by either $b$ or $c$.
+        \item $[\overline{a}]false$ says that only an $a$ action is allowed.
+      \end{itemize}
+    \end{exampleblock}
   \end{frame}
 
   \begin{frame}{Regular Formulae}
