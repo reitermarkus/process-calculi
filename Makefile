@@ -1,4 +1,5 @@
 TARGET = presentation
+CLEAN_TARGETS = $(filter-out $(TARGET).tex, $(wildcard $(TARGET).*))
 
 all: $(TARGET).pdf
 
@@ -7,10 +8,16 @@ $(TARGET).pdf: $(TARGET).tex
 
 .PHONY: watch
 
+watch: clean
 watch: WATCH=-pvc
 watch: $(TARGET).pdf
 
 .PHONY: clean
 
 clean:
-	latexmk -CA
+	$(RM) $(CLEAN_TARGETS)
+
+.PHONY: open
+
+open:
+	$(if ($(OS), Windows_NT), explorer, open) $(TARGET).pdf
