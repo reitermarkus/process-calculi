@@ -74,6 +74,41 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Labelled Transition Systems}
+    \begin{itemize}
+      \item Directed labelled graph \\
+      \item Consists of a set of state and a set of transitions labelled with actions that connect the states \\
+      \item Must have an initial state \\
+      \item Deadlock if a reachable state does not terminate and has no outgoing transitions \\
+    \end{itemize}
+    \begin{tabular}{cc}
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \begin{tikzpicture}[font=\sffamily\scriptsize]
+          \node[vertex] (a) at (0, 0) {};
+          \node[vertex] (b) at (1.8, 0) {};
+
+          \draw[edge] (0, 0.5) to (a);
+          \path[->] (a) edge  node[above] {$set$} (b);
+          \path[->] (b) edge  [loop above] node {$alarm$} ();
+          \path[->] (b) edge  [bend left=50] node[below] {$reset$} (a);
+        \end{tikzpicture}
+      \end{minipage}
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \begin{tikzpicture}[font=\sffamily\scriptsize]
+          \node[vertex] (a) at (0, 0) {};
+          \node[vertex] (b) at (1.8, 0) {};
+
+          \draw[edge] (0, 0.5) to (a);
+          \path[->] (a) edge  node[above] {$set$} (b);
+          \path[->] (b) edge  [bend left=22] node[below] {$alarm$} (a);
+          \path[->] (b) edge  [bend left=90] node[below] {$reset$} (a);
+        \end{tikzpicture}
+      \end{minipage}
+    \end{tabular}
+  \end{frame}
+
   \begin{frame}{Hennessy-Milner Logic}
     \begin{align*}
       af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
