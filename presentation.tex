@@ -11,6 +11,7 @@
 \usepackage[familydefault,light]{Chivo}
 
 \usepackage{setspace}
+\usepackage{graphicx}
 
 \usepackage{tkz-graph}
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
@@ -64,17 +65,6 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Syntax}
-    The set of µ-calculus formulas, $\mathcal{F}$ is the smallest set containing: \\[12pt]
-    \begin{itemize}
-      \item $p$ and $\neg p$ for all propositions $p \in Prop$ \\
-      \item $X$ for all variables $X \in Var$ \\
-      \item $\phi \lor \psi$ and $\phi \land \psi$, if $\phi$, $\psi$ are formulas in $\mathcal{F}$
-      \item ($a$)$\phi$ and [$a$]$\psi$, if $a \in Act$ is an action and $\phi$ is a formual in  $\mathcal{F}$
-      \item $\mu X. \phi$ and $v X. \phi$, if $X \in Var$ is a variable and $\phi \in \mathcal{F}$ is a formula.
-    \end{itemize}
-  \end{frame}
-
   \begin{frame}{Labelled Trainsiton Systems}
     LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
     \begin{itemize}
@@ -85,6 +75,31 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Hennessy-Milner logic}
+    \begin{align*}
+      af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
+    \end{align*}
+    \begin{itemize}
+      \item $\neg ,\ \land\ ,\ \lor$ as usual
+      \item $\langle a \rangle \phi$ is valid whenever an $a-action$ can be performed such that $\phi$ is valid after this $a$ has been done
+      \item $[a]\phi$ is valid when for every action $a$ that can be done, $\phi$ holds after doing that $a$
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Fixed point modalities}
+    By extending the Hennessy-Milner logic with fixed points we have:
+    \resizebox{ \textwidth}{!} {
+      \begin{minipage}{\textwidth}
+        \begin{align*}
+          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \mu X. \phi \ |\ vX. \phi \ |\ X.
+        \end{align*}
+      \end{minipage}
+    }
+    \begin{itemize}
+      \item $\mu X. \phi$ is the minimal fixed point
+      \item $vX. \phi$ is the maximal fixed point
+    \end{itemize}
+  \end{frame}
 
   \begin{frame}{Diamond \& Box Modalities}
     \resizebox{\textwidth}{!}{
@@ -257,10 +272,5 @@
 
       Every time a message is sent, it can eventually be received.
     \end{exampleblock}
-  \end{frame}
-
-  \begin{frame}{}
-  \end{frame}
-  \begin{frame}{}
   \end{frame}
 \end{document}
