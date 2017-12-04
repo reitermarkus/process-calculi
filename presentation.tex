@@ -65,16 +65,6 @@
   \end{frame}
 
   \begin{frame}{Labelled Transition Systems}
-    LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
-    \begin{itemize}
-      \item $S$ is a set of states \\
-      \item $A$ is a set of actions \\
-      \item $\to \subseteq S \times A \times S$ is a transition relation \\
-      \item $s_0 \in S$ is the initial state \\
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}{Labelled Transition Systems}
     \begin{itemize}
       \item Directed labelled graph \\
       \item Consists of a set of state and a set of transitions labelled with actions that connect the states \\
@@ -99,6 +89,7 @@
         \begin{tikzpicture}[font=\sffamily\scriptsize]
           \node[vertex] (a) at (0, 0) {};
           \node[vertex] (b) at (1.8, 0) {};
+          \node at (0, 1.1) {};
 
           \draw[edge] (0, 0.5) to (a);
           \path[->] (a) edge  node[above] {$set$} (b);
@@ -107,6 +98,16 @@
         \end{tikzpicture}
       \end{minipage}
     \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Labelled Transition Systems}
+    LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
+    \begin{itemize}
+      \item $S$ is a set of states \\
+      \item $A$ is a set of actions \\
+      \item $\to \subseteq S \times A \times S$ is a transition relation \\
+      \item $s_0 \in S$ is the initial state \\
+    \end{itemize}
   \end{frame}
 
   \begin{frame}{Hennessy-Milner Logic}
