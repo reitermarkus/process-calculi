@@ -1,23 +1,17 @@
-TARGET = presentation
-CLEAN_TARGETS = $(filter-out $(TARGET).tex, $(wildcard $(TARGET).*))
+all: pdf
 
-all: $(TARGET).pdf
-
-$(TARGET).pdf: $(TARGET).tex
-	latexmk -quiet $(WATCH) -f -pdf -pdflatex="xelatex -synctex=1 -interaction=nonstopmode" -use-make $(TARGET).tex
+.PHONY: pdf
+pdf:
+	latexmk -quiet $(WATCH) -f -pdf -use-make
 
 .PHONY: watch
-
-watch: clean
 watch: WATCH=-pvc
-watch: $(TARGET).pdf
+watch: pdf
 
 .PHONY: clean
-
 clean:
-	$(RM) $(CLEAN_TARGETS)
+	latexmk -CA
 
 .PHONY: open
-
 open:
-	$(if ($(OS), Windows_NT), explorer, open) $(TARGET).pdf
+	latexmk -pv -pdf
