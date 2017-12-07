@@ -1,0 +1,17 @@
+% Coffee Machine 1
+
+
+% Actions
+act insert_coin, choose_coffee, choose_tea,
+                   pour_coffee,   pour_tea;
+
+
+% Process Description
+proc P = insert_coin . (
+           choose_coffee . pour_coffee +
+           choose_tea . pour_tea
+         ) . P;
+
+
+% Process Initialization
+init P;
