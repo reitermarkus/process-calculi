@@ -110,6 +110,43 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Bisimulation}
+    \begin{tabular}{cc}
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \begin{tikzpicture}[font=\sffamily\tiny]
+          \node[vertex] (P1) at (1.6, 3) {$P1$};
+          \node[vertex] (P2) at (0, 1.7) {$P2$};
+          \node[vertex] (P3) at (3.2, 1.7) {$P3$};
+          \node[vertex] (P4) at (0, 0) {$P4$};
+          \node[vertex] (P5) at (3.2, 0) {$P5$};
+
+          \path[->] (P1) edge  node[left] {$coin$} (P2);
+          \path[->] (P1) edge  node[right] {$coin$} (P3);
+          \path[->] (P2) edge  node[left] {$get-tea$} (P4);
+          \path[->] (P3) edge  node[right] {$get-coffee$} (P5);
+          \path[->] (P4) edge [bend right=25]  node[left] {$tea$} (P1);
+          \path[->] (P5) edge [bend left=25]  node[right] {$coffee$} (P1);
+        \end{tikzpicture}
+      \end{minipage}
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \begin{tikzpicture}[font=\sffamily\tiny]
+          \node[vertex] (Q1) at (1.6, 3) {$Q1$};
+          \node[vertex] (Q2) at (1.6, 1.7) {$Q2$};
+          \node[vertex] (Q3) at (3.2, 0) {$Q3$};
+          \node[vertex] (Q4) at (0, 0) {$Q4$};;
+
+          \path[->] (Q1) edge  node[left] {$coin$} (Q2);
+          \path[->] (Q2) edge  node[right] {$get-coffee$} (Q3);
+          \path[->] (Q2) edge   node[left] {$get-tea$} (Q4);
+          \path[->] (Q3) edge  [bend right=40] node[right] {$coffee$} (Q1);
+          \path[->] (Q4) edge   [bend left=40] node[left] {$tea$} (Q1);
+        \end{tikzpicture}
+      \end{minipage}
+    \end{tabular}
+  \end{frame}
+
   \begin{frame}{Hennessy-Milner Logic}
     \begin{align*}
       af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
