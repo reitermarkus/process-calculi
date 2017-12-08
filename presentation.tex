@@ -11,9 +11,13 @@
 \usepackage[familydefault,light]{Chivo}
 
 \usepackage{graphicx}
+\usepackage{color}
+
+\definecolor{red}{RGB}{200,50,0}
+\definecolor{green}{RGB}{0,150,60}
+\definecolor{lightWhite}{RGB}{249,249,249}
 
 \usepackage{listings}
-\usepackage{color}
 
 \lstdefinelanguage{mCRL2}{
   basicstyle=\ttfamily,
@@ -28,13 +32,6 @@
 \usepackage{tkz-graph}
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
-
-\definecolor{red}{RGB}{200,50,0}
-\definecolor{green}{RGB}{0,150,60}
-\definecolor{lightWhite}{RGB}{249,249,249}
-
-\newcommand*{\red}{\color{red}}
-\newcommand*{\green}{\color{green}}
 
 \hypersetup
 {
