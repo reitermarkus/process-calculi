@@ -5,8 +5,8 @@ all: $(LTS)
 .PRECIOUS: %.lps
 %.lps: %.mcrl2
 	mcrl22lps -nfTv $^ $@
-	lpsuntime -v $@ $(patsubst %.cpp, %u.lps, $@)
-	lpsrealelm -v --max=11 $(patsubst %.cpp, %u.lps, $@) $(patsubst %.cpp, %r.lps, $@)
+	lpsuntime -v $@ $(patsubst %.lps, %u.lps, $@)
+	lpsrealelm -v --max=11 $(patsubst %.lps, %u.lps, $@) $(patsubst %.lps, %r.lps, $@)
 
 %.lts: %.lps
 	lps2lts -v $^ $@
