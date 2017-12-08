@@ -12,6 +12,19 @@
 
 \usepackage{graphicx}
 
+\usepackage{listings}
+\usepackage{color}
+
+\lstdefinelanguage{mCRL2}{
+  basicstyle=\ttfamily,
+  sensitive = true,
+  keywords={act, proc, init},
+  otherkeywords={+, .},
+  keywordstyle=\color{green},
+  comment=[l]{\%},
+  commentstyle=\color[rgb]{0.6,0.6,0.6}\ttfamily\itshape,
+}
+
 \usepackage{tkz-graph}
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
@@ -373,5 +386,20 @@
 
       Every time a message is sent, it can eventually be received.
     \end{exampleblock}
+  \end{frame}
+
+  \begin{frame}[fragile]{mCRL2: Syntax}
+    \begin{lstlisting}[language=mCRL2]
+% Actions
+act a, b, c, d, e;
+
+% Processes
+proc P = a . b . c;           % Concatenation
+     Q = d + e;               % Choice
+     R = (a + b) . c . d . e; % Choice & Concatenation
+
+% Specify that the process starts with process P.
+init P;
+    \end{lstlisting}
   \end{frame}
 \end{document}

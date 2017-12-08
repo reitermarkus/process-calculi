@@ -11,6 +11,7 @@
 *.watcher_pid
 *.fls
 *.fdb_latexmk
+*.vrb
 
 # mCRL2
 *.lps
