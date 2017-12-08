@@ -167,7 +167,7 @@
       af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
     \end{align*}
     \begin{itemize}
-      \item $\neg ,\ \land\ ,\ \lor$ as usual
+      \item $\neg ,\ \land\ ,\ \lor$ and $\to$ as usual
       \item $\langle a \rangle \phi$ is valid whenever an $a-action$ can be performed such that $\phi$ is valid after this $a$ has been done
       \item $[a]\phi$ is valid when for every action $a$ that can be done, $\phi$ holds after doing that $a$
     \end{itemize}
@@ -345,7 +345,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{Regular Formulae: Safety Property}
     \begin{align*}
       \square\phi \implies \text{Something bad will never happen.}
     \end{align*}
@@ -361,7 +361,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{Regular Formulae: Liveness Property}
     \begin{align*}
       \diamond\phi \implies \text{Something good will happen.}
     \end{align*}
