@@ -15,7 +15,6 @@
 
 \definecolor{red}{RGB}{200,50,0}
 \definecolor{green}{RGB}{0,150,60}
-\definecolor{lightWhite}{RGB}{249,249,249}
 
 \usepackage{listings}
 
@@ -135,7 +134,7 @@
   \end{frame}
 
   \begin{frame}{Bisimulation}
-    Bisumularity of two coffee machines \\[24pt]
+    Bisimilarity of two coffee machines \\[24pt]
     \begin{tabular}{cc}
       \begin{minipage}{.5\linewidth}
         \centering
@@ -146,12 +145,12 @@
           \node[vertex] (P4) at (0, 0) {$P4$};
           \node[vertex] (P5) at (3.2, 0) {$P5$};
 
-          \path[->] (P1) edge  node[midway, fill=lightWhite] {$coin$} (P2);
-          \path[->] (P1) edge  node[midway, fill=lightWhite] {$coin$} (P3);
-          \path[->] (P2) edge  node[midway, fill=lightWhite] {$get-tea$} (P4);
-          \path[->] (P3) edge  node[midway, fill=lightWhite] {$get-coffee$} (P5);
-          \path[->] (P4) edge [bend right=25] node[midway, fill=lightWhite] {$tea$} (P1);
-          \path[->] (P5) edge [bend left=25]  node[midway, fill=lightWhite] {$coffee$} (P1);
+          \path[edge] (P1) edge node[fill=bg] {$insert\ coin$} (P2);
+          \path[edge] (P1) edge node[fill=bg] {$insert\ coin$} (P3);
+          \path[edge] (P2) edge node[label=left:$choose\ tea$] {} (P4);
+          \path[edge] (P3) edge node[label=right:$choose\ coffee$] {} (P5);
+          \path[edge] (P4) edge [bend right=25] node[fill=bg] {$pour\ tea$} (P1);
+          \path[edge] (P5) edge [bend left=25]  node[xshift=7.5pt, yshift=-10pt, fill=bg] {$pour\ coffee$} (P1);
         \end{tikzpicture}
       \end{minipage}
       \begin{minipage}{.5\linewidth}
@@ -160,13 +159,13 @@
           \node[vertex] (Q1) at (1.6, 3) {$Q1$};
           \node[vertex] (Q2) at (1.6, 1.7) {$Q2$};
           \node[vertex] (Q3) at (3.2, 0) {$Q3$};
-          \node[vertex] (Q4) at (0, 0) {$Q4$};;
+          \node[vertex] (Q4) at (0, 0) {$Q4$};
 
-          \path[->] (Q1) edge  node[midway, fill=lightWhite] {$coin$} (Q2);
-          \path[->] (Q2) edge  node[midway, anchor=center, fill=lightWhite] {$get-coffee$} (Q3);
-          \path[->] (Q2) edge  node[midway, anchor=center, fill=lightWhite] {$get-tea$} (Q4);
-          \path[->] (Q3) edge  [bend right=40] node[midway, anchor=center, fill=lightWhite] {$coffee$} (Q1);
-          \path[->] (Q4) edge   [bend left=40] node[midway, fill=lightWhite] {$tea$} (Q1);
+          \path[edge] (Q1) edge node[fill=bg] {$insert\ coin$} (Q2);
+          \path[edge] (Q2) edge node[fill=bg] {$choose\ coffee$} (Q3);
+          \path[edge] (Q2) edge node[fill=bg] {$choose\ tea$} (Q4);
+          \path[edge] (Q3) edge [bend right=40] node[fill=bg] {$pour\ coffee$} (Q1);
+          \path[edge] (Q4) edge [bend left=40] node[fill=bg] {$pour\ tea$} (Q1);
         \end{tikzpicture}
       \end{minipage}
     \end{tabular}
