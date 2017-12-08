@@ -73,6 +73,16 @@
       \item Must have an initial state \\
       \item Deadlock if a reachable state does not terminate and has no outgoing transitions \\
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Labelled Transition Systems}
+    LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
+    \begin{itemize}
+      \item $S$ is a set of states \\
+      \item $A$ is a set of actions \\
+      \item $\to\ \subseteq S \times A \times S$ is a transition relation \\
+      \item $s_0 \in S$ is the initial state \\
+    \end{itemize}
     \begin{tabular}{cc}
       \begin{minipage}{.5\linewidth}
         \centering
@@ -102,14 +112,16 @@
     \end{tabular}
   \end{frame}
 
-  \begin{frame}{Labelled Transition Systems}
-    LTS is a tuple $(S, A, \to,s_0>)$ where: \\[12pt]
-    \begin{itemize}
-      \item $S$ is a set of states \\
-      \item $A$ is a set of actions \\
-      \item $\to\ \subseteq S \times A \times S$ is a transition relation \\
-      \item $s_0 \in S$ is the initial state \\
-    \end{itemize}
+  \begin{frame}{Bisimulation}
+    Binary relation between LTSs, where LTSs behave the same way in the sense that one LTS simulates the other and vice versa. \\[24pt]
+
+    \begin{exampleblock}{Trace equivalence:}
+      two LTSs are equivalent iff they can perform the same sequences of actions, starting from their initial states.
+    \end{exampleblock}
+
+    \begin{exampleblock}{Strong bisimilarity:}
+      if one LTS can perform an action $a$ then the other LTS must also be able to perform an action $a$ in a way that the resulting states are again related.
+    \end{exampleblock}
   \end{frame}
 
   \begin{frame}{Bisimulation}
