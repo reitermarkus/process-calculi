@@ -180,35 +180,6 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Fixed Point Modalities}
-    By extending the Hennessy-Milner logic with fixed points we have:
-    \resizebox{ \textwidth}{!} {
-      \begin{minipage}{\textwidth}
-        \begin{align*}
-          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ vX. \phi \ |\ X.
-        \end{align*}
-      \end{minipage}
-    }
-    \begin{itemize}
-      \item $X$ is a set of states
-      \item $\mu X. \phi$ is the minimal fixed point
-      \item $vX. \phi$ is the maximal fixed point
-      \item minimal and maximal fixed point operators are each oter's duals
-    \end{itemize}
-    \begin{tabular}{cc}
-      \begin{minipage}{.47\linewidth}
-        \begin{align*}
-          \neg vX. \phi = \mu X. \neg \phi
-        \end{align*}
-      \end{minipage}
-      \begin{minipage}{.47\linewidth}
-        \begin{align*}
-          \neg \mu X. \phi = vX. \neg \phi
-        \end{align*}
-      \end{minipage}
-    \end{tabular}
-  \end{frame}
-
   \begin{frame}{Diamond \& Box Modalities}
     \resizebox{\textwidth}{!}{
       \newcommand{\valid}{{\color{green} valid}}
@@ -380,6 +351,35 @@
 
       Every time a message is sent, it can eventually be received.
     \end{exampleblock}
+  \end{frame}
+
+  \begin{frame}{Fixed Point Modalities}
+    By extending the Hennessy-Milner logic with fixed points we have:
+    \resizebox{ \textwidth}{!} {
+      \begin{minipage}{\textwidth}
+        \begin{align*}
+          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ vX. \phi \ |\ X.
+        \end{align*}
+      \end{minipage}
+    }
+    \begin{itemize}
+      \item $X$ is a set of states
+      \item $\mu X. \phi$ is the minimal fixed point
+      \item $vX. \phi$ is the maximal fixed point
+      \item minimal and maximal fixed point operators are each oter's duals
+    \end{itemize}
+    \begin{tabular}{cc}
+      \begin{minipage}{.47\linewidth}
+        \begin{align*}
+          \neg vX. \phi = \mu X. \neg \phi
+        \end{align*}
+      \end{minipage}
+      \begin{minipage}{.47\linewidth}
+        \begin{align*}
+          \neg \mu X. \phi = vX. \neg \phi
+        \end{align*}
+      \end{minipage}
+    \end{tabular}
   \end{frame}
 
   \begin{frame}[fragile]{mCRL2: Syntax}
