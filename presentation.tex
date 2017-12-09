@@ -65,7 +65,7 @@
 
   \begin{frame}{Process Calculi}
     \begin{itemize}
-      \item ACP
+      \item \textbf{ACP}
       \item CCS
       \item CSP
       \item Join-Calculus
@@ -380,6 +380,19 @@
         \end{align*}
       \end{minipage}
     \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Algebra of Communicating Processes (ACP)}
+    \begin{align*}
+      P ::= p\ |\ P + P\ |\ P \cdot P\ |\ P || P\ |\ P |\lfloor P
+    \end{align*}
+
+    \begin{itemize}
+      \item $a + b$ means either $a$ or $b$ (a.k.a. \textit{choice operator}).
+      \item $a \cdot b$ means $a$ followed by $b$ (a.k.a. \textit{sequence operator}).
+      \item $(a \cdot b) || (c \cdot d)$ means $a \cdot b$ in parallel with $c \cdot d$ (a.k.a. \textit{merge operator}),\\ so either $abcd$, $acbd$, $acdb$, $cabd$, $cadb$ or $cdab$.
+      \item $(a \cdot b) |\lfloor (c \cdot b)$ is a special case of $||$, which ensures that the left branch is started first (a.k.a. \textit{left-merge operator}), in this case starting with $a$, \\ so only $abcd$, $acdb$ and $adbc$ are possible.
+    \end{itemize}
   \end{frame}
 
   \begin{frame}{mCRL2}
