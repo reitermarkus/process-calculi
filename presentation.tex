@@ -16,6 +16,7 @@
 \definecolor{red}{RGB}{200,50,0}
 \definecolor{green}{RGB}{0,150,60}
 
+\usepackage{amssymb}
 \usepackage{listings}
 
 \lstdefinelanguage{mCRL2}{
@@ -381,6 +382,18 @@
       \end{minipage}
     \end{tabular}
   \end{frame}
+
+  \begin{frame}{Fixed Point Modalities}
+    \begin{exampleblock}{example}
+      \begin{itemize}
+        \item $\mu X. \langle a \rangle X$ and $vX. \langle a \rangle X$
+        \item Do they hold for the state $s$?
+        \item states to consider: empty set $X = \emptyset$ and set of all states $X = \{s\}$
+        \item if $X = \emptyset$ then $false = \langle a \rangle false$, which is valid
+      \end{itemize}
+    \end{exampleblock}
+  \end{frame}
+
 
   \begin{frame}{Algebra of Communicating Processes (ACP)}
     \begin{align*}
