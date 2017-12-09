@@ -11,10 +11,14 @@
 \usepackage[familydefault,light]{Chivo}
 
 \usepackage{graphicx}
-\usepackage{color}
+\graphicspath{{assets/}}
+\usepackage[export]{adjustbox}
 
+\usepackage{color}
 \definecolor{red}{RGB}{200,50,0}
 \definecolor{green}{RGB}{0,150,60}
+
+\usepackage{enumitem}
 
 \usepackage{amssymb}
 \usepackage{listings}
@@ -449,5 +453,22 @@ init P;
 
   \begin{frame}[standout]
     mCRL2 Live Demo
+  \end{frame}
+
+  \begin{frame}[standout]
+    Why do we need this?
+  \end{frame}
+
+  \begin{frame}{Real-World Example: Automated Parking Garage}
+    \begin{tabular}{cc}
+      \includegraphics[width=0.475\textwidth, valign=t]{parking_garage_errors.png}
+      &
+      \includegraphics[width=0.465\textwidth, valign=t]{parking_garage_enter.png}
+    \end{tabular}
+
+    \begin{enumerate}[label=(\alph*)]
+      \item It was possible to rip a car in half with the shuttles.
+      \item It was possible to damage two cars using the lift.
+    \end{enumerate}
   \end{frame}
 \end{document}
