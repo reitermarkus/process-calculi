@@ -1,0 +1,2 @@
+% After pouring either tea or coffee, we can insert a coin again.
+[true* . (pour_tea + pour_coffee) . insert_coin]true
