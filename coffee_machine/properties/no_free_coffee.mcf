@@ -1,0 +1,2 @@
+% You cannot get free tea or coffee.
+[!insert_coin* . (choose_tea + choose_coffee)]false
