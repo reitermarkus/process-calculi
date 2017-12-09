@@ -23,10 +23,10 @@ bisim: $(LTS)
 	ltscompare --equivalence=bisim --tau=insert_coin,choose_coffee,choose_tea,pour_tea,pour_coffee $^
 
 %.coffee_machine_1.pbes: coffee_machine_1.lps
-	lps2pbes -f  $(patsubst %.coffee_machine_1.pbes, %.mcf, $@) $^ $@
+	lps2pbes -f $(patsubst %.coffee_machine_1.pbes, %.mcf, $@) $^ $@
 
 %.coffee_machine_2.pbes: coffee_machine_2.lps
-	lps2pbes -f  $(patsubst %.coffee_machine_2.pbes, %.mcf, $@) $^ $@
+	lps2pbes -f $(patsubst %.coffee_machine_2.pbes, %.mcf, $@) $^ $@
 
 .PHONY: properties
 properties: $(PROPERTIES_PBES)

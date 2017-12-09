@@ -77,10 +77,10 @@
 
   \begin{frame}{Labelled Transition Systems}
     \begin{itemize}
-      \item Directed labelled graph \\
-      \item Consists of a set of state and a set of transitions labelled with actions that connect the states \\
-      \item Must have an initial state \\
-      \item Deadlock if a reachable state does not terminate and has no outgoing transitions \\
+      \item directed labelled graph \\
+      \item consists of a set of state and a set of transitions labelled with actions that connect the states \\
+      \item must have an initial state \\
+      \item deadlock if a reachable state does not terminate and has no outgoing transitions \\
     \end{itemize}
   \end{frame}
 
@@ -125,16 +125,16 @@
     Binary relation between LTSs, where LTSs behave the same way in the sense that one LTS simulates the other and vice versa. \\[24pt]
 
     \begin{exampleblock}{Trace equivalence:}
-      two LTSs are equivalent iff they can perform the same sequences of actions, starting from their initial states.
+      Two LTSs are equivalent iff they can perform the same sequences of actions, starting from their initial states.
     \end{exampleblock}
 
     \begin{exampleblock}{Strong bisimilarity:}
-      if one LTS can perform an action $a$ then the other LTS must also be able to perform an action $a$ in a way that the resulting states are again related.
+      If one LTS can perform an action $a$ then the other LTS must also be able to perform an action $a$ in a way that the resulting states are again related.
     \end{exampleblock}
   \end{frame}
 
   \begin{frame}{Bisimulation}
-    Bisimilarity of two coffee machines \\[24pt]
+    Bisimilarity of two coffee machines: \\[24pt]
     \centering
     \resizebox{\textwidth}{!}{
       \begin{tabular}{cc}
