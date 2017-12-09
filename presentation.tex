@@ -51,6 +51,7 @@
     \begin{itemize}
       \item What is a Process Calculus?
       \item µ-Calculus
+      \item ACP
       \item mCRL2
     \end{itemize}
   \end{frame}
@@ -170,7 +171,7 @@
     }
   \end{frame}
 
-  \begin{frame}{Hennessy-Milner Logic}
+  \begin{frame}{µ-Calculus – Hennessy-Milner Logic}
     \begin{align*}
       af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
     \end{align*}
@@ -181,7 +182,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Diamond \& Box Modalities}
+  \begin{frame}{µ-Calculus – Diamond \& Box Modalities}
     \resizebox{\textwidth}{!}{
       \newcommand{\valid}{{\color{green} valid}}
       \newcommand{\invalid}{{\color{red} invalid}}
@@ -237,7 +238,7 @@
     }
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{µ-Calculus – Regular Formulae}
     \begin{itemize}
       \item allow more than a single action in a modality
       \item useful for expressing that after two or more \\
@@ -250,7 +251,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Action Formulae}
+  \begin{frame}{µ-Calculus – Action Formulae}
     An action formula $af$ defines a set of multi-actions.
 
     \begin{align*}
@@ -266,7 +267,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Action Formulae}
+  \begin{frame}{µ-Calculus – Action Formulae}
     $af$ being a set of multi-actions, modalities with action formulae are defined like this:
 
     \begin{align*}
@@ -283,7 +284,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{µ-Calculus – Regular Formulae}
     Regular formulae extend action formulae, allowing sequences of actions in modalities.
 
     \begin{align*}
@@ -299,7 +300,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{µ-Calculus – Regular Formulae}
     \begin{exampleblock}{Examples}
       \begin{itemize}
         \item $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$, so one can always perform no action, and remain in the same state.
@@ -311,7 +312,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Regular Formulae}
+  \begin{frame}{µ-Calculus – Regular Formulae}
     Two other commonly used formulae are the \textit{always} and \textit{eventually} modalities.
 
     \begin{align*}
@@ -324,7 +325,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Regular Formulae: Safety Property}
+  \begin{frame}{µ-Calculus – Regular Formulae: Safety Property}
     \begin{align*}
       \square\phi \implies \text{Something bad will never happen.}
     \end{align*}
@@ -340,7 +341,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Regular Formulae: Liveness Property}
+  \begin{frame}{µ-Calculus – Regular Formulae: Liveness Property}
     \begin{align*}
       \diamond\phi \implies \text{Something good will happen.}
     \end{align*}
@@ -354,7 +355,7 @@
     \end{exampleblock}
   \end{frame}
 
-  \begin{frame}{Fixed Point Modalities}
+  \begin{frame}{µ-Calculus – Fixed Point Modalities}
     By extending the Hennessy-Milner logic with fixed points we have:
     \resizebox{ \textwidth}{!} {
       \begin{minipage}{\textwidth}
@@ -383,7 +384,7 @@
     \end{tabular}
   \end{frame}
 
-  \begin{frame}{Fixed Point Modalities}
+  \begin{frame}{µ-Calculus – Fixed Point Modalities}
     \begin{exampleblock}{example}
       \begin{itemize}
         \item $\mu X. \langle a \rangle X$ and $vX. \langle a \rangle X$
