@@ -397,16 +397,29 @@
 
   \begin{frame}{Algebra of Communicating Processes (ACP)}
     \begin{align*}
-      P ::= a\ |\ P + P\ |\ P \cdot P\ |\ P || P\ |\ P |\lfloor P
+      P ::= a\ |\ \delta\ |\ \tau\ |\ P + P\ |\ P \cdot P\ |\ (P || P)\ |\ (P |\lfloor P)\ |\ (P | P)\ |\ \tau_I(P)
     \end{align*}
 
     \begin{itemize}
-      \item $a$ represents an atomic action. $\delta$ is the deadlock action.
-      \item $a + b$ means either $a$ or $b$ (a.k.a. \textit{choice operator}).
-      \item $a \cdot b$ means $a$ followed by $b$ (a.k.a. \textit{sequence operator}).
-      \item $(a \cdot b) || (c \cdot d)$ means $a \cdot b$ in parallel with $c \cdot d$ (a.k.a. \textit{merge operator}),\\ so either $abcd$, $acbd$, $acdb$, $cabd$, $cadb$ or $cdab$.
-      \item $(a \cdot b) |\lfloor (c \cdot b)$ is a special case of $||$, which ensures that the left branch is started first (a.k.a. \textit{left-merge operator}), in this case starting with $a$, \\ so only $abcd$, $acdb$ and $adbc$ are possible.
+      \item $a$ represents an atomic action, $\delta$ is the deadlock action \\ and $\tau$ is the silent action.
+      \item $a + b$ means either $a$ or $b$ (a.k.a. \textit{alternative operator}).
+      \item $a \cdot b$ means $a$ followed by $b$ (a.k.a. \textit{sequencing operator}).
+      \item $||$ denotes concurrency (a.k.a. merge operator).
+      \item $|\lfloor$ is a special case of $||$ (a.k.a. \textit{left-merge operator}).
+      \item $|$ is the communications operator.
+      \item $\tau_I$ is the abstraction operator, used to “hide” certain actions.
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Algebra of Communicating Processes (ACP)}
+    \begin{exampleblock}{Examples}
+      \begin{itemize}
+        \item $(a \cdot b) || (c \cdot d)$ means $a \cdot b$ in parallel with $c \cdot d$, so either $abcd$, $acbd$, $acdb$, $cabd$, $cadb$ or $cdab$.
+        \item $(a \cdot b) |\lfloor (c \cdot b)$ ensures that the left branch is started first, in this case that $a$ occurs first, \\ so only $abcd$, $acdb$ and $adbc$ are possible.
+        \item $r(d) | w(d)$ means that the value $d$ is communicated from action $w$ from the right side to $r$ on the left side (a.k.a. communications operator).
+        \item $\tau_{\{c\}}((a+b)\cdot c) = (a + b) \cdot \tau$, which can be reduced to $a + b$.
+      \end{itemize}
+    \end{exampleblock}
   \end{frame}
 
   \begin{frame}{mCRL2}
@@ -424,9 +437,9 @@
 act a, b, c, d, e;
 
 % Processes
-proc P = a . b . c;           % Concatenation
-     Q = d + e;               % Choice
-     R = (a + b) . c . d . e; % Choice & Concatenation
+proc P = a . b . c;           % Sequence
+     Q = d + e;               % Alternative
+     R = (a + b) . c . d . e; % Alternative & Sequence
 
 % Specify that the process starts with process P.
 init P;
