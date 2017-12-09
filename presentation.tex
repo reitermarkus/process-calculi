@@ -397,10 +397,11 @@
 
   \begin{frame}{Algebra of Communicating Processes (ACP)}
     \begin{align*}
-      P ::= p\ |\ P + P\ |\ P \cdot P\ |\ P || P\ |\ P |\lfloor P
+      P ::= a\ |\ P + P\ |\ P \cdot P\ |\ P || P\ |\ P |\lfloor P
     \end{align*}
 
     \begin{itemize}
+      \item $a$ represents an atomic action. $\delta$ is the deadlock action.
       \item $a + b$ means either $a$ or $b$ (a.k.a. \textit{choice operator}).
       \item $a \cdot b$ means $a$ followed by $b$ (a.k.a. \textit{sequence operator}).
       \item $(a \cdot b) || (c \cdot d)$ means $a \cdot b$ in parallel with $c \cdot d$ (a.k.a. \textit{merge operator}),\\ so either $abcd$, $acbd$, $acdb$, $cabd$, $cadb$ or $cdab$.
