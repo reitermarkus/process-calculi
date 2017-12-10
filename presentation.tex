@@ -195,6 +195,26 @@
         &
 
         \begin{tikzpicture}
+          \node[vertex] (a) at (0, 1.25) {};
+          \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
+
+          \draw[edge] (0, 1.75) to (a);
+          \draw[edge] (a) to node [left] {$a$} (b);
+        \end{tikzpicture}
+
+        &
+
+        \begin{tikzpicture}
+          \node[vertex] (a) at (0, 1.25) {};
+          \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
+
+          \draw[edge] (0, 1.75) to (a);
+          \draw[edge] (a) to node [left] {$a$} (b);
+        \end{tikzpicture}
+
+        &
+
+        \begin{tikzpicture}
           \node[vertex] (a) at (0.75, 1.25) {};
           \node[vertex] [label=left:{$\phi$}] (b) at (0, 0) {};
           \node[vertex] [label=right:{$\neg\phi$}] (c) at (1.5, 0) {};
@@ -213,31 +233,11 @@
           \draw[edge] (0, 1.75) to (a);
         \end{tikzpicture}
 
-        &
-
-        \begin{tikzpicture}
-          \node[vertex] (a) at (0, 1.25) {};
-          \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
-
-          \draw[edge] (0, 1.75) to (a);
-          \draw[edge] (a) to node [left] {$a$} (b);
-        \end{tikzpicture}
-
-        &
-
-        \begin{tikzpicture}
-          \node[vertex] (a) at (0, 1.25) {};
-          \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
-
-          \draw[edge] (0, 1.75) to (a);
-          \draw[edge] (a) to node [left] {$a$} (b);
-        \end{tikzpicture}
-
         \\
 
-        $\langle{}a\rangle{}\phi$ & \valid   & \invalid & \valid & \invalid \\
+        $\langle{}a\rangle{}\phi$ & \valid & \invalid & \only<2->{\valid}   & \only<4->{\invalid} \\
 
-        $[a]\phi$                 & \invalid & \valid   & \valid & \invalid \\
+        $[a]\phi$                 & \valid & \invalid & \only<3->{\invalid} & \only<5->{\valid}   \\
       \end{tabular}
     }
   \end{frame}
