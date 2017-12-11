@@ -370,25 +370,25 @@
     \resizebox{ \textwidth}{!} {
       \begin{minipage}{\textwidth}
         \begin{align*}
-          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ vX. \phi \ |\ X.
+          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ \nu X. \phi \ |\ X.
         \end{align*}
       \end{minipage}
     }
     \begin{itemize}
       \item $X$ is a set of states
       \item $\mu X. \phi$ is the minimal fixed point
-      \item $vX. \phi$ is the maximal fixed point
+      \item $\nu X. \phi$ is the maximal fixed point
       \item minimal and maximal fixed point operators are each other's duals
     \end{itemize}
     \begin{tabular}{cc}
       \begin{minipage}{.47\linewidth}
         \begin{align*}
-          \neg vX. \phi = \mu X. \neg \phi
+          \neg \nu X. \phi = \mu X. \neg \phi
         \end{align*}
       \end{minipage}
       \begin{minipage}{.47\linewidth}
         \begin{align*}
-          \neg \mu X. \phi = vX. \neg \phi
+          \neg \mu X. \phi = \nu X. \neg \phi
         \end{align*}
       \end{minipage}
     \end{tabular}
@@ -403,11 +403,11 @@
         \end{tikzpicture}
       \end{center}
       \begin{itemize}
-        \item Do $\mu X. \langle a \rangle X$ and $vX. \langle a \rangle X$ hold for the state $s$?
+        \item Do $\mu X. \langle a \rangle X$ and $\nu X. \langle a \rangle X$ hold for the state $s$?
         \item states to consider: empty set $X = \emptyset$ and set of all states $X = \{s\}$
         \item if $X = \emptyset$ then $X = \langle a \rangle X$ reduces to $false = \langle a \rangle false$, which is valid
         \item $\mu X. \langle a \rangle X$ is valid for all states in the empty set but not in $s$
-        \item $vX. \langle a \rangle X$ is valid for all states in the largest set $\{s\}$
+        \item $\nu X. \langle a \rangle X$ is valid for all states in the largest set $\{s\}$
       \end{itemize}
     \end{exampleblock}
   \end{frame}
