@@ -112,9 +112,9 @@
           \node[vertex] (b) at (1.8, 0) {};
 
           \draw[edge] (0, 0.5) to (a);
-          \path[->] (a) edge  node[above] {$set$} (b);
-          \path[->] (b) edge  [loop above] node {$alarm$} ();
-          \path[->] (b) edge  [bend left=50] node[below] {$reset$} (a);
+          \path[->] (a) edge  node[above] {$\mathit{set}$} (b);
+          \path[->] (b) edge  [loop above] node {$\mathit{alarm}$} ();
+          \path[->] (b) edge  [bend left=50] node[below] {$\mathit{reset}$} (a);
         \end{tikzpicture}
       \end{minipage}
       \begin{minipage}{.5\linewidth}
@@ -125,9 +125,9 @@
           \node at (0, 1.1) {};
 
           \draw[edge] (0, 0.5) to (a);
-          \path[->] (a) edge  node[above] {$set$} (b);
-          \path[->] (b) edge  [bend left=22] node[below] {$alarm$} (a);
-          \path[->] (b) edge  [bend left=90] node[below] {$reset$} (a);
+          \path[->] (a) edge  node[above] {$\mathit{set}$} (b);
+          \path[->] (b) edge  [bend left=22] node[below] {$\mathit{alarm}$} (a);
+          \path[->] (b) edge  [bend left=90] node[below] {$\mathit{reset}$} (a);
         \end{tikzpicture}
       \end{minipage}
     \end{tabular}
@@ -156,11 +156,11 @@
             \node[vertex] (P3) at (3.2, 0) {$P3$};
             \node[vertex] (P4) at (0, 0) {$P4$};
 
-            \path[edge] (P1) edge node[fill=bg] {$insert\ coin$} (P2);
-            \path[edge] (P2) edge node[fill=bg] {$choose\ coffee$} (P3);
-            \path[edge] (P2) edge node[fill=bg] {$choose\ tea$} (P4);
-            \path[edge] (P3) edge [bend right=40] node[fill=bg] {$pour\ coffee$} (P1);
-            \path[edge] (P4) edge [bend left=40] node[fill=bg] {$pour\ tea$} (P1);
+            \path[edge] (P1) edge node[fill=bg] {$\mathit{insert\ coin}$} (P2);
+            \path[edge] (P2) edge node[fill=bg] {$\mathit{choose\ coffee}$} (P3);
+            \path[edge] (P2) edge node[fill=bg] {$\mathit{choose\ tea}$} (P4);
+            \path[edge] (P3) edge [bend right=40] node[fill=bg] {$\mathit{pour\ coffee}$} (P1);
+            \path[edge] (P4) edge [bend left=40] node[fill=bg] {$\mathit{pour\ tea}$} (P1);
           \end{tikzpicture}
           &
           \begin{tikzpicture}[font=\sffamily\tiny]
@@ -170,12 +170,12 @@
             \node[vertex] (Q4) at (0, 0) {$Q4$};
             \node[vertex] (Q5) at (3.2, 0) {$Q5$};
 
-            \path[edge] (Q1) edge node[fill=bg] {$insert\ coin$} (Q2);
-            \path[edge] (Q1) edge node[fill=bg] {$insert\ coin$} (Q3);
-            \path[edge] (Q2) edge node[label=left:$choose\ tea$] {} (Q4);
-            \path[edge] (Q3) edge node[label=right:$choose\ coffee$] {} (Q5);
-            \path[edge] (Q4) edge [bend right=25] node[fill=bg] {$pour\ tea$} (Q1);
-            \path[edge] (Q5) edge [bend left=25]  node[xshift=7.5pt, yshift=-10pt, fill=bg] {$pour\ coffee$} (Q1);
+            \path[edge] (Q1) edge node[fill=bg] {$\mathit{insert\ coin}$} (Q2);
+            \path[edge] (Q1) edge node[fill=bg] {$\mathit{insert\ coin}$} (Q3);
+            \path[edge] (Q2) edge node[label=left:$\mathit{choose\ tea}$] {} (Q4);
+            \path[edge] (Q3) edge node[label=right:$\mathit{choose\ coffee}$] {} (Q5);
+            \path[edge] (Q4) edge [bend right=25] node[fill=bg] {$\mathit{pour\ tea}$} (Q1);
+            \path[edge] (Q5) edge [bend left=25]  node[xshift=7.5pt, yshift=-10pt, fill=bg] {$\mathit{pour\ coffee}$} (Q1);
           \end{tikzpicture}
       \end{tabular}
     }
@@ -183,7 +183,7 @@
 
   \begin{frame}{µ-Calculus – Hennessy-Milner Logic}
     \begin{align*}
-      \phi ::= true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
+      \phi ::= \mathit{true}\ |\ \mathit{false}\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
     \end{align*}
     \begin{itemize}
       \item $\neg ,\ \land\ ,\ \lor$ and $\to$ as usual
@@ -262,34 +262,34 @@
   \end{frame}
 
   \begin{frame}{µ-Calculus – Action Formulae}
-    An action formula $af$ defines a set of multi-actions.
+    An action formula $\mathit{af}$ defines a set of multi-actions.
 
     \begin{align*}
-      af ::= \alpha\ |\ true\ |\ false\ |\ \overline{af}\ |\ af\ \cap\ af\ |\ af\ \cup\ af
+      \mathit{af} ::= \alpha\ |\ \mathit{true}\ |\ \mathit{false}\ |\ \overline{\mathit{af}}\ |\ \mathit{af}\ \cap\ \mathit{af}\ |\ \mathit{af}\ \cup\ \mathit{af}
     \end{align*}
 
     \begin{itemize}
       \item $\alpha$ represents the set with exactly the multi-action $\alpha$.
-      \item $true$ is the set of all multi-actions.
-      \item $false$ is the empty set.
-      \item $\overline{af}$ denotes the complement of the set $af$.
+      \item $\mathit{true}$ is the set of all multi-actions.
+      \item $\mathit{false}$ is the empty set.
+      \item $\overline{\mathit{af}}$ denotes the complement of the set $\mathit{af}$.
       \item $\cup$ and $\cap$ denote union and intersection, respectively.
     \end{itemize}
   \end{frame}
 
   \begin{frame}{µ-Calculus – Action Formulae}
-    $af$ being a set of multi-actions, modalities with action formulae are defined like this:
+    $\mathit{af}$ being a set of multi-actions, modalities with action formulae are defined like this:
 
     \begin{align*}
-      \langle{af}\rangle\phi = \bigvee_{\alpha \in af} \langle\alpha\rangle\phi
+      \langle{\mathit{af}}\rangle\phi = \bigvee_{\alpha \in \mathit{af}} \langle\alpha\rangle\phi
       \qquad\qquad
-      [af]\phi = \bigwedge_{\alpha \in af} [\alpha]\phi
+      [\mathit{af}]\phi = \bigwedge_{\alpha \in \mathit{af}} [\alpha]\phi
     \end{align*}
 
     \begin{exampleblock}{Example}
       \begin{itemize}
-        \item $\langle\overline{a}\rangle\langle{b \cup c}\rangle{true}$ means an action other than $a$ can be done, followed by either $b$ or $c$.
-        \item $[\overline{a}]false$ says that only an $a$ action is allowed.
+        \item $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$ means an action other than $a$ can be done, followed by either $b$ or $c$.
+        \item $[\overline{a}]\mathit{false}$ says that only an $a$ action is allowed.
       \end{itemize}
     \end{exampleblock}
   \end{frame}
@@ -298,7 +298,7 @@
     Regular formulae extend action formulae, allowing sequences of actions in modalities.
 
     \begin{align*}
-      R ::= \epsilon\ |\ af\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
+      R ::= \epsilon\ |\ \mathit{af}\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
     \end{align*}
 
     \begin{itemize}
@@ -314,9 +314,9 @@
     \begin{exampleblock}{Examples}
       \begin{itemize}
         \item $[\epsilon]\phi = \langle\epsilon\rangle\phi = \phi$, so one can always perform no action, and remain in the same state.
-        \item $\langle{a}\cdot{b}\cdot{c}\rangle{true}$ is the same as $\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle{true}$.
-        \item $[a\cdot{b} + c\cdot{d}]false$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible.
-        \item $\langle{a^*}\rangle{true}$ expresses that any sequence of $a$ actions is possible.
+        \item $\langle{a}\cdot{b}\cdot{c}\rangle\mathit{true}$ is the same as $\langle{a}\rangle\langle{b}\rangle\langle{c}\rangle\mathit{true}$.
+        \item $[a\cdot{b} + c\cdot{d}]\mathit{false}$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible.
+        \item $\langle{a^*}\rangle\mathit{true}$ expresses that any sequence of $a$ actions is possible.
         \item $[a^+]\phi$ says that $\phi$ must hold in any state reachable by one or more $a$ actions.
       \end{itemize}
     \end{exampleblock}
@@ -326,7 +326,7 @@
     Two other commonly used formulae are the \textit{always} and \textit{eventually} modalities.
 
     \begin{align*}
-      \square\phi = [true^*]\phi \qquad\qquad    \diamond\phi = \langle{true^*}\rangle\phi
+      \square\phi = [\mathit{true}^*]\phi \qquad\qquad    \diamond\phi = \langle\mathit{true}^*\rangle\phi
     \end{align*}
 
     \begin{itemize}
@@ -344,7 +344,7 @@
       We have a program with a critical region and two actions, \textit{enter} and \textit{leave}.
 
       \begin{align*}
-        [true^*\cdot enter \cdot \overline{leave}^* \cdot enter]false
+        [\mathit{true}^*\cdot \mathit{enter} \cdot \overline{\mathit{leave}}^* \cdot \mathit{enter}]\mathit{false}
       \end{align*}
 
       It is impossible to enter twice in a row. There has to be a \textit{leave} action in between two \textit{enter} actions.
@@ -358,7 +358,7 @@
 
     \begin{exampleblock}{Example}
       \begin{align*}
-        [true^*\cdot send]\langle true^* \cdot receive \rangle true
+        [\mathit{true}^*\cdot \mathit{send}]\langle \mathit{true}^* \cdot \mathit{receive} \rangle \mathit{true}
       \end{align*}
 
       Every time a message is sent, it can eventually be received.
@@ -370,7 +370,7 @@
     \resizebox{ \textwidth}{!} {
       \begin{minipage}{\textwidth}
         \begin{align*}
-          af ::= \alpha\ |\ true\ |\ false\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ \nu X. \phi \ |\ X.
+          \mathit{af} ::= \alpha\ |\ \mathit{true}\ |\ \mathit{false}\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ \nu X. \phi \ |\ X.
         \end{align*}
       \end{minipage}
     }
@@ -405,7 +405,7 @@
       \begin{itemize}
         \item Do $\mu X. \langle a \rangle X$ and $\nu X. \langle a \rangle X$ hold for the state $s$?
         \item states to consider: empty set $X = \emptyset$ and set of all states $X = \{s\}$
-        \item if $X = \emptyset$ then $X = \langle a \rangle X$ reduces to $false = \langle a \rangle false$, which is valid
+        \item if $X = \emptyset$ then $X = \langle a \rangle X$ reduces to $\mathit{false} = \langle a \rangle \mathit{false}$, which is valid
         \item $\mu X. \langle a \rangle X$ is valid for all states in the empty set but not in $s$
         \item $\nu X. \langle a \rangle X$ is valid for all states in the largest set $\{s\}$
       \end{itemize}
