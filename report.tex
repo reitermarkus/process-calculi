@@ -1,0 +1,26 @@
+% !TEX TS-program = xelatex
+%
+\documentclass{report}
+
+  \usepackage[english]{babel}
+  \usepackage{parskip}
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+
+  \title{Process Calculi for Concurrency}
+  \author{Markus Reiter, Michael Kaltschmid}
+
+  \begin{document}
+  \maketitle
+  \tableofcontents
+
+  \section{Introduction}
+  \subsection{What is a Process Calculus?}
+  A Process Calculus is basically an approach for formally modelling concurrent systems. \\
+  Furthermore it is a tool for high-level description of interactions, communications and synchronizations between processes. \\
+  It also provides algebraic laws to allow analyzing and transforming process descriptions and permits formal reasoning about equivalences between processes (e.g., using bisimulation) \\
+
+  \subsection{Focus}
+  There are various forms of Process Calculi like $ACP$, $CCS$, $CSP$, $Join-Calculus$, $\mu-Calculus$, $PEPA$ or $\pi-Calculus$. However we are only going to focus on $ACP$ and $\mu-Calculus$. Specifically on $\mu-Calculus$ since it is the base for $mCRL2$.
+
+  \end{document}
