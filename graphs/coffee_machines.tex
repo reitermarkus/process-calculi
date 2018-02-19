@@ -1,0 +1,29 @@
+\begin{tabular}{cc}
+  \begin{tikzpicture}[font=\sffamily\tiny]
+    \node[vertex] (P1) at (1.6, 3) {$P1$};
+    \node[vertex] (P2) at (1.6, 1.7) {$P2$};
+    \node[vertex] (P3) at (3.2, 0) {$P3$};
+    \node[vertex] (P4) at (0, 0) {$P4$};
+
+    \path[edge] (P1) edge node[fill=white] {$\mathit{insert\ coin}$} (P2);
+    \path[edge] (P2) edge node[fill=white] {$\mathit{choose\ coffee}$} (P3);
+    \path[edge] (P2) edge node[fill=white] {$\mathit{choose\ tea}$} (P4);
+    \path[edge] (P3) edge [bend right=40] node[fill=white] {$\mathit{pour\ coffee}$} (P1);
+    \path[edge] (P4) edge [bend left=40] node[fill=white] {$\mathit{pour\ tea}$} (P1);
+  \end{tikzpicture}
+  &
+  \begin{tikzpicture}[font=\sffamily\tiny]
+    \node[vertex] (Q1) at (1.6, 3) {$Q1$};
+    \node[vertex] (Q2) at (0, 1.7) {$Q2$};
+    \node[vertex] (Q3) at (3.2, 1.7) {$Q3$};
+    \node[vertex] (Q4) at (0, 0) {$Q4$};
+    \node[vertex] (Q5) at (3.2, 0) {$Q5$};
+
+    \path[edge] (Q1) edge node[fill=white] {$\mathit{insert\ coin}$} (Q2);
+    \path[edge] (Q1) edge node[fill=white] {$\mathit{insert\ coin}$} (Q3);
+    \path[edge] (Q2) edge node[label=left:$\mathit{choose\ tea}$] {} (Q4);
+    \path[edge] (Q3) edge node[label=right:$\mathit{choose\ coffee}$] {} (Q5);
+    \path[edge] (Q4) edge [bend right=25] node[fill=white] {$\mathit{pour\ tea}$} (Q1);
+    \path[edge] (Q5) edge [bend left=25]  node[xshift=7.5pt, yshift=-10pt, fill=white] {$\mathit{pour\ coffee}$} (Q1);
+  \end{tikzpicture}
+\end{tabular}

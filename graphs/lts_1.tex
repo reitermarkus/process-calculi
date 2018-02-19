@@ -1,0 +1,9 @@
+\begin{tikzpicture}[font=\sffamily\scriptsize]
+  \node[vertex] (a) at (0, 0) {};
+  \node[vertex] (b) at (1.8, 0) {};
+
+  \draw[edge] (0, 0.5) to (a);
+  \path[->] (a) edge  node[above] {$\mathit{set}$} (b);
+  \path[->] (b) edge  [loop above] node {$\mathit{alarm}$} ();
+  \path[->] (b) edge  [bend left=50] node[below] {$\mathit{reset}$} (a);
+\end{tikzpicture}

@@ -1,0 +1,27 @@
+\usepackage{graphicx}
+\graphicspath{{assets/}}
+
+\usepackage{listings}
+
+\lstdefinelanguage{mCRL2}{
+  basicstyle=\ttfamily,
+  sensitive = true,
+  keywords={act, proc, init},
+  otherkeywords={+, .},
+  keywordstyle=\color{green},
+  comment=[l]{\%},
+  commentstyle=\color[rgb]{0.6,0.6,0.6}\itshape,
+}
+
+\usepackage{color}
+\definecolor{red}{RGB}{200,50,0}
+\definecolor{green}{RGB}{0,150,60}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{tkz-graph}
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
+\tikzset{edge/.style = {->,> = latex'}}

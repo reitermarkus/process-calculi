@@ -12,6 +12,8 @@
 *.fls
 *.fdb_latexmk
 *.vrb
+*.bbl
+*.blg
 
 # mCRL2
 *.lps

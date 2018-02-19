@@ -1,0 +1,12 @@
+\begin{lstlisting}[language=mCRL2]
+% Actions
+act a, b, c, d, e;
+
+% Processes
+proc P = a . b . c;           % Sequence
+     Q = d + e;               % Alternative
+     R = (a + b) . c . d . e; % Alternative & Sequence
+
+% Specify that the process starts with process P.
+init P;
+\end{lstlisting}
