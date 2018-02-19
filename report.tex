@@ -1,6 +1,6 @@
 % !TEX TS-program = xelatex
 %
-\documentclass{report}
+\documentclass{clseminar}
 
 \usepackage[english]{babel}
 \usepackage{parskip}
@@ -17,8 +17,10 @@
 
 \title{Process Calculi for Concurrency}
 \author{Markus Reiter, Michael Kaltschmid}
+\supervisor{Vincent van Oostrom}
 
 \begin{document}
+  \abstract{\input{abstract}}
   \maketitle
   \tableofcontents
 
@@ -151,4 +153,5 @@
     \item $[a]\phi$ is valid when for every action $a$ that can be done, $\phi$ holds after doing that $a$
   \end{itemize}
 
+  \section{mCRL2}
 \end{document}

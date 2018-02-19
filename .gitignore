@@ -20,3 +20,5 @@
 *.pbes
 jittyc_*.cpp
 *.log
+
+!logos/*.pdf
