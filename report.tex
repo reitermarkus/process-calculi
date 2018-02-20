@@ -11,6 +11,10 @@
 \usepackage{amssymb}
 \usepackage{listings}
 
+\usepackage{color}
+\definecolor{red}{RGB}{200,50,0}
+\definecolor{green}{RGB}{0,150,60}
+
 \usepackage{tkz-graph}
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
@@ -148,10 +152,71 @@
   \end{align*}
   \begin{itemize}
     \item $\mathit{true}$ is true in each state of a process and $\mathit{false}$ is never true
-    \item $\neg ,\ \land\ ,\ \lor$ and $\to$ as usual
+    \item $\neg ,\ \land\ ,\ \lor$ and $\to$ as in propositional logic
     \item $\langle a \rangle \phi$ is valid whenever an $a-action$ can be performed such that $\phi$ is valid after this $a$ has been done
     \item $[a]\phi$ is valid when for every action $a$ that can be done, $\phi$ holds after doing that $a$
   \end{itemize}
 
-  \section{mCRL2}
+  \subsection{Diamond and Box Modalities}
+
+  Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. In order to show the difference between the two modalities we have four simple LTSs where we take look wheter the box modality or the diamond modality of $a$.
+
+  \resizebox{\textwidth}{!}{
+    \newcommand{\valid}{{\color{green} valid}}
+    \newcommand{\invalid}{{\color{red} invalid}}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{l c c c c}
+      &
+
+      \begin{tikzpicture}
+        \node[vertex] (a) at (0, 1.25) {};
+        \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
+
+        \draw[edge] (0, 1.75) to (a);
+        \draw[edge] (a) to node [left] {$a$} (b);
+      \end{tikzpicture}
+
+      &
+
+      \begin{tikzpicture}
+        \node[vertex] (a) at (0, 1.25) {};
+        \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
+
+        \draw[edge] (0, 1.75) to (a);
+        \draw[edge] (a) to node [left] {$a$} (b);
+      \end{tikzpicture}
+
+      &
+
+      \begin{tikzpicture}
+        \node[vertex] (a) at (0.75, 1.25) {};
+        \node[vertex] [label=left:{$\phi$}] (b) at (0, 0) {};
+        \node[vertex] [label=right:{$\neg\phi$}] (c) at (1.5, 0) {};
+
+        \draw[edge] (.75, 1.75) to (a);
+        \draw[edge] (a) to node [left] {$a$} (b);
+        \draw[edge] (a) to node [right] {$a$} (c);
+      \end{tikzpicture}
+
+      &
+
+      \begin{tikzpicture}
+        \node[vertex] (a) at (0, 1.25) {};
+        \node at (0, -0.175) {};
+
+        \draw[edge] (0, 1.75) to (a);
+      \end{tikzpicture}
+
+      \\
+
+      $\langle{}a\rangle{}\phi$ & \valid & \invalid & \valid & \invalid \\
+
+      $[a]\phi$                 & \valid & \invalid & \invalid &  \valid \\
+    \end{tabular}
+  }\\[6pt]
+
+  In the first LTS a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are possible. \\
+  In the second LTS there is no $a$ action to a state where $\phi$ holds and for that reason both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are not possible. \\
+  In the third LTS there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not holds and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
+  In the fourth LTS there is no $a$ action at all and therefore $\langle{}a\rangle{}\phi$ is not valid because, because there needs to be an $a$ action that can be performed and $[a]\phi$ is valid, since there is no action that can be done. \\
 \end{document}
