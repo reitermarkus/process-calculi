@@ -233,6 +233,8 @@
 
   \textbf{mCRL2} is a toolset which is used for specifying and analysing behaviour of distributed systems and protocols. We chose this tool because it uses an ACP-like syntax for its formal specification language for processes as well as µ-Calculus for model checking.
 
+  \subsection{Process Specification}
+
   Let's first take a look at the \textbf{mCRL2} syntax for specifying processes. Usually, a process specification file will have a file name of the form \texttt{*.mcrl2}.
 
   \begin{figure}[!ht]
@@ -279,6 +281,46 @@ proc Q = (
   \end{lstlisting}
 
   For this machine, we specify a process named \texttt{Q}. This process starts with a choice, which is either a sequence of inserting a coin, choosing coffee and pouring coffee or inserting a coin, choosing tea and pouring tea. In comparison to the first machine, the \texttt{insert\_coin} action is now part of the choice between coffee or tea.
+
+  \subsection{Process Properties}
+
+  Now that we have specified the processes for two coffee machines, we want to define some properties they adhere to.
+
+  In \textbf{mCRL2}, these properties are defined in \texttt{*.mcf} (\textbf{m}odel \textbf{c}hecking \textbf{f}ormula) files and expressed by regular formulae.
+
+  We start with a simple property: The machine does only pour coffee after coffee is chosen. For this, we use a box modality which is false if any sequence of actions that are not \texttt{choose\_coffee} is followed by \texttt{pour\_coffee}.
+
+  \begin{lstlisting}[language=mCRL2]
+[!choose_coffee* . pour_coffee]false
+  \end{lstlisting}
+
+  The \textbf{mCRL2} syntax for formulae uses \texttt{[} and \texttt{]} for box modalities.
+
+  The second property is the counterpart to the first. The machine should only pour tea if in fact we chose tea.
+
+  \begin{lstlisting}[language=mCRL2]
+[!choose_tea* . pour_tea]false
+  \end{lstlisting}
+
+  With our third property, we want to ensure that the machine is reusable.
+
+  \begin{lstlisting}[language=mCRL2]
+[true* . (pour_tea + pour_coffee) . insert_coin]true
+  \end{lstlisting}
+
+  After any valid sequence of actions (\texttt{true*}) which ends with pouring either coffee or tea (\texttt{pour\_tea + pour\_coffee}), inserting a coin is possible.
+
+  Lastly, we define a property which is probably one of the more important one in a real world scenario. Namely that the machine does never give out free coffee or tea.
+
+  \begin{lstlisting}[language=mCRL2]
+[!insert_coin* . (choose_tea + choose_coffee)]false
+  \end{lstlisting}
+
+  Here we define that any sequence of actions which are not \texttt{insert\_coin}, followed by choosing coffee or tea, is invalid.
+
+  \subsection{Model Checking}
+
+
 
   \newpage
 
