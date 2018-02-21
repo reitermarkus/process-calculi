@@ -7,6 +7,8 @@
 \usepackage[english]{babel}
 \usepackage{parskip}
 
+\usepackage{forest}
+
 \bibfile{references}
 
 \title{Process Calculi for Concurrency}
@@ -282,6 +284,20 @@ proc Q = (
 
   For this machine, we specify a process named \texttt{Q}. This process starts with a choice, which is either a sequence of inserting a coin, choosing coffee and pouring coffee or inserting a coin, choosing tea and pouring tea. In comparison to the first machine, the \texttt{insert\_coin} action is now part of the choice between coffee or tea.
 
+  Lastly, we need to specify the starting process for both machines,
+
+  \begin{lstlisting}[language=mCRL2]
+init P;
+  \end{lstlisting}
+
+  and
+
+  \begin{lstlisting}[language=mCRL2]
+init Q;
+  \end{lstlisting}
+
+  respectively.
+
   \subsection{Process Properties}
 
   Now that we have specified the processes for two coffee machines, we want to define some properties they adhere to.
@@ -319,6 +335,52 @@ proc Q = (
   Here we define that any sequence of actions which are not \texttt{insert\_coin}, followed by choosing coffee or tea, is invalid.
 
   \subsection{Model Checking}
+
+  We have now seen how to specify processes and process properties using \textbf{mCRL2}, but we have not yet used any tool provided by it.
+
+  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. We need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into a LPS (Linear Process Specificaion). We then use \texttt{lps2pbes} to convert the LPS into a PBES (Parameterised Boolean Equation System). Finally, we use \texttt{pbes2bool} to solve the PBES.
+
+  We will now look at a specific example using our coffee machines.
+
+  We assume the following directory structure:
+
+  \begin{forest}
+    for tree={
+      font=\ttfamily,
+      grow'=0,
+      child anchor=west,
+      parent anchor=south,
+      anchor=west,
+      calign=first,
+      edge path={
+        \noexpand\path [draw, \forestoption{edge}]
+        (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+      },
+      before typesetting nodes={
+        if n=1
+          {insert before={[,phantom]}}
+          {}
+      },
+      fit=band,
+      before computing xy={l=15pt},
+    }
+    [./
+      [coffee\_machine\_1.mcrl2]
+      [coffee\_machine\_2.mcrl2]
+      [properties
+        [choose\_coffee\_to\_pour\_coffee.mcf]
+        [choose\_tea\_to\_pour\_tea.mcf]
+        [insert\_coin\_after\_pour.mcf]
+        [no\_free\_coffee.mcf]
+      ]
+    ]
+  \end{forest}
+
+
+
+
+  \subsection{Additional Tools}
+
 
 
 
