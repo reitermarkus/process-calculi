@@ -225,6 +225,77 @@
 
   The \textit{always} and \textit{eventually} modalities are further referred as Safety and Liveness properties.
 
+  \subsubsection{Satefy Proberty}
+
+  \begin{align*}
+    \square\phi \text{ says that Something bad will never happen.}
+  \end{align*}
+
+  It is best to show this with an example. The following is a progrom with a critcal region and two actions, enter and leave.
+
+  \begin{align*}
+    [\mathit{true}^*\cdot \mathit{enter} \cdot \overline{\mathit{leave}}^* \cdot \mathit{enter}]\mathit{false}
+  \end{align*}
+
+  In this example it is impossible to enter twice in a row. There has to be a leave action in
+  between two enter actions.
+
+  \pagebreak
+  \subsubsection{Liveness Property}
+
+  \begin{align*}
+    \diamond\phi \text{ means that Something good will happen.}
+  \end{align*}
+
+  In order to demonstrate the liveness property we have program that sends and receives messages.
+
+  \begin{align*}
+    [\mathit{true}^*\cdot \mathit{send}]\langle \mathit{true}^* \cdot \mathit{receive} \rangle \mathit{true}
+  \end{align*}
+
+  Every time a message is sent, it can eventually be received.
+
+  \section{Fixed Point Modalities}
+
+  By extending the Hennessy-Milner logic with fixed points we have:
+
+  \begin{align*}
+    \mathit{af} ::= \alpha\ |\ \mathit{true}\ |\ \mathit{false}\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi\ |\ \color{green} \mu X. \phi \ |\ \nu X. \phi \ |\ X.
+  \end{align*}
+
+  \begin{itemize}
+    \item $X$ is a set of states
+    \item $\mu X. \phi$ is the minimal fixed point
+    \item $\nu X. \phi$ is the maximal fixed point
+    \item minimal and maximal fixed point operators are each other's duals
+  \end{itemize}
+  \begin{tabular}{cc}
+    \begin{minipage}{.47\linewidth}
+      \begin{align*}
+        \neg \nu X. \phi = \mu X. \neg \phi
+      \end{align*}
+    \end{minipage}
+    \begin{minipage}{.47\linewidth}
+      \begin{align*}
+        \neg \mu X. \phi = \nu X. \neg \phi
+      \end{align*}
+    \end{minipage}
+  \end{tabular}
+
+  To make as more familiar with the concept of fixed points and especially with the difference between the minimal fixed point and the maximal fixed point, we have an example with a simple LTS with exactly one state and a loop with an action $a$ \\
+
+  \begin{center}
+    \begin{tikzpicture}[font=\sffamily\scriptsize]
+      \node[vertex] (S) at (0, 0) {$s$};
+      \path[->, every loop/.style={looseness=15}] (S) edge  [loop above] node {$a$} ();
+    \end{tikzpicture}
+  \end{center}
+
+  The first question is if $\mu X. \langle a \rangle X$ and $\nu X. \langle a \rangle X$ hold for the state $s$. \\
+  The states in question are empty set $X = \emptyset$ and set of all states $X = \{s\}$. \\
+  Now if $X = \emptyset$ then $X = \langle a \rangle X$, which can be further reduced to $\mathit{false} = \langle a \rangle \mathit{false}$, which is valid. \\
+  Therefore $\mu X. \langle a \rangle X$ - minimal fixed point is valid for all states in the empty set but not in $s$ and $\nu X. \langle a \rangle X$ - maximal fixed point is valid for all states in the largest set $\{s\}$.
+
   \section{ACP}
 
   ACP is the Algebra of Communicating Processes and is used to describe parallel and concurrent processes.
