@@ -157,6 +157,71 @@
   In the third LTS there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not holds and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
   In the fourth LTS there is no $a$ action at all and therefore $\langle{}a\rangle{}\phi$ is not valid because, because there needs to be an $a$ action that can be performed and $[a]\phi$ is valid, since there is no action that can be done.
 
+  \subsection{Regular Formulae}
+
+  In many cases we'd like to allow for more than one single action in a modality and in this case Regular formulas are useful. \\
+  An example would be that after two or more arbitrary actions, a specific action must happen or after two receive actions, a send action must follow. \\
+  Regular formulas are based on Action formular. An Action formular is a set of multi action, which is as follows:
+
+  \pagebreak
+  An action formula af defines a set of multi-actions. \\
+
+  \begin{align*}
+    \mathit{af} ::= \alpha\ |\ \mathit{true}\ |\ \mathit{false}\ |\ \overline{\mathit{af}}\ |\ \mathit{af}\ \cap\ \mathit{af}\ |\ \mathit{af}\ \cup\ \mathit{af}
+  \end{align*}
+
+  \begin{itemize}
+    \item $\alpha$ represents the set with exactly the multi-action $\alpha$.
+    \item $\mathit{true}$ is the set of all multi-actions.
+    \item $\mathit{false}$ is the empty set.
+    \item $\overline{\mathit{af}}$ denotes the complement of the set $\mathit{af}$.
+    \item $\cup$ and $\cap$ denote union and intersection, respectively.
+  \end{itemize}
+
+  The modal formula $\langle true \rangle \langle a \rangle true$ expresses that an arbitrary action followed by an action a can be performed. \\
+  The formula $[true]false$ expresses that no action can be done.
+
+  $\mathit{af}$ being a set of multi-actions, modalities with action formulae are defined like this:
+
+  \begin{align*}
+    \langle{\mathit{af}}\rangle\phi = \bigvee_{\alpha \in \mathit{af}} \langle\alpha\rangle\phi
+    \qquad\qquad
+    [\mathit{af}]\phi = \bigwedge_{\alpha \in \mathit{af}} [\alpha]\phi
+  \end{align*}
+
+  As an example we can look at $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$, which means than an action other than $a$ can be done, followed by either $b$ or $c$ \\
+  $[\overline{a}]\mathit{false}$ says that only an $a$ action is allowed. \\
+
+  Regular formulae extend action formulae, allowing sequences of actions in modalities.
+
+  \begin{align*}
+    R ::= \epsilon\ |\ \mathit{af}\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
+  \end{align*}
+
+  \begin{itemize}
+    \item $\epsilon$ is the empty sequence of actions.
+    \item $R_1\cdot{R_2}$ represents the concatenation of $R_1$ and $R_2$.
+    \item $R_1+R_2$ denotes the union of  $R_1$ and $R_2$.
+    \item $R^*$ denotes zero ore more repetitions.
+    \item $R^+$ denotes one ore more repetitions.
+  \end{itemize}
+
+  Since $R_1\cdot{R_2}$ denotes the concatenation of $R_1$ and $R_2$, we can write $\langle a \cdot b \cdot c \rangle true$ instead of $\langle a \rangle \langle b \rangle \langle c \rangle true$ true. Both express that the sequence of actions a, b and c can be performed. \\
+  In contrast to that $[a\cdot{b} + c\cdot{d}]\mathit{false}$ means that neither the sequence $a\cdot{b}$ nor $c\cdot{d}$ is possible. \\
+  Also $[a^+]\phi$ says that $\phi$ must hold in any state reachable by one or more $a$ actions. \\
+  Furthermore $[\epsilon]\phi = \langle \epsilon \rangle \phi = \phi$ therefore we can always perform no action to stay in the same state. \\
+
+  Two other commonly used formulae are the \textit{always} and \textit{eventually} modalities.\\
+
+  \begin{align*}
+    \square\phi = [\mathit{true}^*]\phi \qquad\qquad    \diamond\phi = \langle\mathit{true}^*\rangle\phi
+  \end{align*}
+
+  where $\square\phi$ means that $\phi$ holds in all reachable states and $\diamond\phi$ says that there is a sequence of actions after which $\phi$ holds. \\
+
+  \subsection{Safety and Liveness Properties}
+
+  The \textit{always} and \textit{eventually} modalities are further referred as Safety and Liveness properties.
 
   \section{ACP}
 
