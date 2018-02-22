@@ -9,6 +9,9 @@
 
 \usepackage{forest}
 
+\usepackage{caption}
+\usepackage{subcaption}
+
 \bibfile{references}
 
 \title{Process Calculi for Concurrency}
@@ -46,23 +49,31 @@
     \item $s_0 \in S$ is the initial state \\
   \end{itemize}
 
-  \begin{tabular}{cc}
+  \begin{figure}[!ht]
     \begin{minipage}{.5\linewidth}
       \centering
       \input{graphs/lts_1}
+      \captionof{figure}{}
+      \label{fig:lts1}
     \end{minipage}
     \begin{minipage}{.5\linewidth}
       \centering
       \input{graphs/lts_2}
+      \captionof{figure}{}
+      \label{fig:lts2}
     \end{minipage}
-  \end{tabular} \\[12pt]
+  \end{figure}
 
-  In the two figures above you can see examples of two LTSs for alarm clocks. The first alarm clock on the left allows for repeated alarms which can be seen by the loop on top of the alarm state. With the second alarm clock it is only possible to signal the alarm once. \\
-  Both LTSs are determistic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS nondeterministic by drawing a loop on top of the alarm state as you can see in the figure below. \\
+  In \autoref{fig:lts1} and \autoref{fig:lts2} you can see examples of two LTSs for alarm clocks. The first alarm clock on the left allows for repeated alarms which can be seen by the loop on top of the alarm state. With the second alarm clock it is only possible to signal the alarm once.
 
-  \begin{center}
+  Both LTSs are determistic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS nondeterministic by drawing a loop on top of the alarm state as you can see in \autoref{fig:lts3}. \\
+
+  \begin{figure}[!ht]
+    \centering
     \input{graphs/lts_3}
-  \end{center}
+    \caption{}
+    \label{fig:lts3}
+  \end{figure}
 
   \subsection{Bisimulation}
   Bisimulation is a binary relation between LTSs, where LTSs behave the same way in the sense
