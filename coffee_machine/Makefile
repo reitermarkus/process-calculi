@@ -7,7 +7,7 @@ all: $(LTS) $(PROPERTIES_PBES)
 
 .PRECIOUS: %.lps
 %.lps: %.mcrl2
-	mcrl22lps -nfTv $^ $@
+	mcrl22lps -v $^ $@
 
 %.lts: %.lps
 	lps2lts -v $^ $@

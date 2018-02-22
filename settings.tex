@@ -10,11 +10,14 @@
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1}}
 \tikzset{edge/.style = {->,> = latex'}}
 
-\usepackage{listings}
 \usepackage{color}
 
 \definecolor{red}{RGB}{200,50,0}
 \definecolor{green}{RGB}{0,150,60}
+
+\usepackage{listings}
+
+\lstset{basicstyle=\ttfamily,breaklines=true}
 
 \lstdefinelanguage{mCRL2}{
   basicstyle=\ttfamily,
@@ -25,4 +28,3 @@
   comment=[l]{\%},
   commentstyle=\color[rgb]{0.6,0.6,0.6}\itshape,
 }
-

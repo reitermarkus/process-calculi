@@ -447,6 +447,50 @@ init Q;
     ]
   \end{forest}
 
+  We want to check that coffee machine 1 never gives out free coffee.
+
+  First, we convert our process specification into an LPS:
+
+  \begin{lstlisting}[language=Bash]
+mcrl22lps coffee_machine_1.mcrl2 coffee_machine_1.lps
+  \end{lstlisting}
+
+  Next, we convert the LPS we just created into a PBES:
+
+  \begin{lstlisting}[language=Bash]
+lps2pbes -f properties/no_free_coffee.mcf coffee_machine_1.lps properties/no_free_coffee.coffee_machine_1.pbes
+  \end{lstlisting}
+
+  Here, with the \texttt{-f} flag, we specify the formula which should be checked.
+
+  Finally, we use \texttt{pbes2bool} to solve the PBES.
+
+  \begin{lstlisting}[language=Bash]
+pbes2bool properties/no_free_coffee.coffee_machine_1.pbes
+  \end{lstlisting}
+
+  If we additionally pass the \texttt{-v} flag, we can see the strategies used to solve the equation. Here is the output for our property:
+
+  \begin{lstlisting}
+Guessing input format: PBES in internal format
+pbes2bool parameters:
+  input file:            properties/no_free_coffee.coffee_machine_1.pbes
+  data rewriter:         jitty
+  substitution strategy: 0
+  search strategy:       breadth-first
+  solution strategy      lf
+  erase level:           none
+Loading PBES in pbes format...
+Processed 1 and generated 1 boolean variables.
+Generated 1 BES equations in total, generating BES
+Solving a BES with 1 equations using the local fixed point algorithm.
+Solving equations of rank 0.
+The solution for the initial variable of the pbes is true
+true
+  \end{lstlisting}
+
+  With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite{mcrl2doc} or by using the tools help flag (\texttt{-h}).
+
 
 
 
