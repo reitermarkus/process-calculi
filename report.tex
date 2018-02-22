@@ -300,7 +300,35 @@
 
   ACP is the Algebra of Communicating Processes and is used to describe parallel and concurrent processes.
 
-  \cite{groote2014}
+  In ACP, a process is defined \cite{groote2014} as follows:
+
+  \begin{align*}
+    P ::= a\ |\ \delta\ |\ \tau\ |\ P + P\ |\ P \cdot P\ |\ (P || P)\ |\ (P |\lfloor P)\ |\ (P | P)\ |\ \tau_I(P)
+  \end{align*}
+
+  Here, $a$ represents an atomic action, $\delta$ is the deadlock action \\ and $\tau$ is the silent action.
+
+  $a + b$ means either $a$ or $b$ (\textit{alternative operator}), $a \cdot b$ means $a$ followed by $b$ (\textit{sequencing operator}).
+
+  $|\lfloor$ is the left-merge operator, it is the generalized version of $||$ (\textit{merge operator}) and denotes concurrency.
+  \\
+  \begin{example}
+    $(a \cdot b) |\lfloor (c \cdot b)$ ensures that the left branch is started first, in this case that $a$ occurs first, so only the sequences $abcd$, $acdb$ and $adbc$ are possible.
+
+    $(a \cdot b) || (c \cdot d)$ is therefore actually an alternative between $(a \cdot b) |\lfloor (c \cdot b)$ and $(c \cdot b) |\lfloor (a \cdot b)$.
+  \end{example}
+
+  $|$ is the called the communications operator and is used do pass data between actions.
+  \\
+  \begin{example}
+     $r(d) | w(d)$ means that the value $d$ is communicated from action $w$ from the right side to $r$ on the left side.
+  \end{example}
+
+  $\tau_I$ is the abstraction operator. It is used to “hide” certain actions.
+  \\
+  \begin{example}
+    $\tau_{\{c\}}((a+b)\cdot c)$ is equal to $(a + b) \cdot \tau$, which can be reduced to $a + b$.
+  \end{example}
 
   \section{mCRL2}
 
