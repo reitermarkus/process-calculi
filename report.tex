@@ -39,8 +39,8 @@
 
   \section{Labelled Transition Systems}
 
-  A LTS is a directed labelled graph and it consists of a set of state and a set of transitoins labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
-  transitions. If a state has more than one outgoing transition with the same label to different states, then it is nondeterministic.
+  A LTS is a directed labelled graph and it consists of a set of state and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
+  transitions. If a state has more than one outgoing transition with the same label to different states, then it is non-deterministic.
 
   A LTS is a tuple $(S, A, \to,s_0>)$ where: \\
 
@@ -68,7 +68,7 @@
 
   In \autoref{fig:lts1} and \autoref{fig:lts2} you can see examples of two LTSs for alarm clocks. The first alarm clock on the left allows for repeated alarms which can be seen by the loop on top of the alarm state. With the second alarm clock it is only possible to signal the alarm once.
 
-  Both LTSs are determistic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS nondeterministic by drawing a loop on top of the alarm state as you can see in \autoref{fig:lts3}. \\
+  Both LTSs are deterministic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS non-deterministic by drawing a loop on top of the alarm state as you can see in \autoref{fig:lts3}. \\
 
   \begin{figure}[!ht]
     \centering
@@ -98,7 +98,7 @@
   So the process of inserting a coin and then either getting a coffee or a tea is the same but the path and most importantly the sates are different.
 
   \section{µ-Calculus}
-  As already mentioned before µ-Calculus is an integral part of $mcrl2$. µ-Calculus is an extension of propositional logic and therefore shares some similiarites. \\
+  As already mentioned before µ-Calculus is an integral part of $mCRL2$. µ-Calculus is an extension of propositional logic and therefore shares some similarities. \\
   Furthermore it is used to describe and verify properties of LTSs.
 
   \subsection{Hennessy-Milner Logic}
@@ -239,13 +239,13 @@
 
   The \textit{always} and \textit{eventually} modalities are further referred as Safety and Liveness properties.
 
-  \subsubsection{Satefy Proberty}
+  \subsubsection{Safety Property}
 
   \begin{align*}
     \square\phi \text{ says that Something bad will never happen.}
   \end{align*}
 
-  It is best to show this with an example. The following is a progrom with a critcal region and two actions, enter and leave.
+  It is best to show this with an example. The following is a program with a critical region and two actions, enter and leave.
 
   \begin{align*}
     [\mathit{true}^*\cdot \mathit{enter} \cdot \overline{\mathit{leave}}^* \cdot \mathit{enter}]\mathit{false}
@@ -358,7 +358,7 @@
     \label{fig:mcrl2_syntax}
   \end{figure}
 
-  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to $a$ in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or processes, if there are more than one. We do this using the \texttt{proc} keywords, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences and action alternatives. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice betweeen action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
+  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to $a$ in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or processes, if there are more than one. We do this using the \texttt{proc} keywords, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences and action alternatives. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
 
   To demonstrate the power of ACP and µ-Calculus in combination with the \textbf{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textbf{mCRL2}.
 
@@ -451,7 +451,7 @@ init Q;
 
   We have now seen how to specify processes and process properties using \textbf{mCRL2}, but we have not yet used any tool provided by it.
 
-  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. We need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into a LPS (Linear Process Specificaion). We then use \texttt{lps2pbes} to convert the LPS into a PBES (Parameterised Boolean Equation System). Finally, we use \texttt{pbes2bool} to solve the PBES.
+  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. We need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into a LPS (Linear Process Specification). We then use \texttt{lps2pbes} to convert the LPS into a PBES (Parametrized Boolean Equation System). Finally, we use \texttt{pbes2bool} to solve the PBES.
 
   We will now look at a specific example using our coffee machines.
 
