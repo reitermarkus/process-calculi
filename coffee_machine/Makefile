@@ -18,7 +18,7 @@ graph: $(LTS)
 
 .PHONY: bisim
 bisim: $(LTS)
-	ltscompare --equivalence=bisim --tau=insert_coin,choose_coffee,choose_tea,pour_tea,pour_coffee $^
+	ltscompare --equivalence=bisim $^
 
 %.coffee_machine_1.pbes: coffee_machine_1.lps
 	lps2pbes -f $(patsubst %.coffee_machine_1.pbes, %.mcf, $@) $^ $@

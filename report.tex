@@ -491,13 +491,51 @@ true
 
   With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite{mcrl2doc} or by using the tools help flag (\texttt{-h}).
 
+  \subsection{LTS}
 
+  The \texttt{lps2lts} command is used to convert an LPS into an LTS.
 
+  \begin{lstlisting}[language=Bash]
+lps2lts coffee_machine_1.lps coffee_machine_1.lts
+  \end{lstlisting}
 
-  \subsection{Additional Tools}
+  We can now view the LTS with the \texttt{ltsgraph} command:
 
+  \begin{lstlisting}[language=Bash]
+ltsgraph coffee_machine_1.lts
+  \end{lstlisting}
 
+  This opens a GUI (\autoref{fig:ltsgraph}) which allows you to interactively traverse the graph and view it in full.
 
+  \begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{ltsgraph.png}
+    \caption{\texttt{ltsgraph} window showing \texttt{coffee\_machine\_1.lts}.}
+    \label{fig:ltsgraph}
+  \end{figure}
+
+  \subsection{Bisimilarity}
+
+  The last tool we want to demonstrate is \texttt{ltscompare}, which as the name implies is used to compare two LTSs.
+
+  We already know that our two coffee machines are trace equivalent, but not bisimilar. We now want to check this with \texttt{ltscompare}.
+
+  First, we need to generate the LTSs for our two coffee machines.
+
+  \begin{lstlisting}[language=Bash]
+mcrl22lps coffee_machine_1.mcrl2 coffee_machine_1.lps
+mcrl22lps coffee_machine_2.mcrl2 coffee_machine_2.lps
+
+lps2lts coffee_machine_1.lps coffee_machine_1.lts
+lps2lts coffee_machine_2.lps coffee_machine_2.lts
+  \end{lstlisting}
+
+  Next, we run \texttt{ltscompare} and pass \texttt{--equivalence} to specify which equivalence should be used, in our case \texttt{bisim}.
+
+  \begin{lstlisting}[language=Bash]
+ltscompare --equivalence=bisim coffee_machine_1.lts coffee_machine_2.lts
+  \end{lstlisting}
+
+  Again, all available equivalences cann be seen in the tools help page (\texttt{-h} flag) or in the \texttt{mCRL2} documentation \cite{mcrl2doc}.
 
   \newpage
 
