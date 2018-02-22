@@ -22,18 +22,21 @@
   \tableofcontents
 
   \section{Introduction}
-  This report is about $mCRL2$, a rather modern Process Calculi. We will discuss $mCRL2$ itself and concepts which are the base of it.
+  This report is about \textit{mCRL2}, a modern toolset for process specification and model checking. We will discuss \textit{mCRL2} itself and the concepts it is based upon.
+
   \subsection{What is a Process Calculus?}
-  A Process Calculus is basically an approach for formally modelling concurrent systems.
-  Furthermore it is a tool for high-level description of interactions, communications and synchronizations between processes. \\
-  It also provides algebraic laws to allow analyzing and transforming process descriptions and permits formal reasoning about equivalences between processes (e.g., using bisimulation) \\
+
+  A process calculus is an approach for formally modelling concurrent systems. Furthermore it is a tool for the high-level description of interactions, communication and synchronization between processes. It also provides algebraic laws to allow analyzing and transforming process descriptions and permits formal reasoning about equivalences between processes (e.g. using bisimulation).
 
   \subsection{Focus}
-  There are various other forms of Process Calculi like $ACP$, $CCS$, $CSP$, $Join-Calculus$, $\mu-Calculus$, $PEPA$ or $\pi-Calculus$. However we are only going to focus on $ACP$ and $\mu-Calculus$. Specifically on $\mu-Calculus$ since it the core concept of $mCRL2$.
+
+  There are various other forms of process calculi like \textit{ACP}, \textit{CCS}, \textit{CSP}, \textit{Join-Calculus}, \textit{$\mu$-Calculus}, \textit{PEPA} or \textit{$\pi$-Calculus}. However we are only going to focus on \textit{ACP} and \textit{$\mu$-Calculus}. Specifically on \textit{$\mu$-Calculus} since it is the core concept of \textit{mCRL2}.
 
   \section{Labelled Transition Systems}
+
   A LTS is a directed labelled graph and it consists of a set of state and a set of transitoins labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
-  transitions. If a state has more than one outgoing transition with the same label to different states, then it is nondeterministic. \\[12pt]
+  transitions. If a state has more than one outgoing transition with the same label to different states, then it is nondeterministic.
+
   A LTS is a tuple $(S, A, \to,s_0>)$ where: \\
 
   \begin{itemize}[noitemsep]
