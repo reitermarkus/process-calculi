@@ -31,7 +31,7 @@
 
   \subsection{What is a Process Calculus?}
 
-  A process calculus is an approach for formally modelling concurrent systems. Furthermore it is a tool for the high-level description of interactions, communication and synchronization between processes. It also provides algebraic laws to allow analyzing and transforming process descriptions and permits formal reasoning about equivalences between processes (e.g. using bisimulation).
+  A process calculus is an approach for formally modelling concurrent systems. Furthermore it is a tool for high-level description of interactions, communication and synchronization between processes. It also provides algebraic laws to allow analyzing and transforming process descriptions and permits formal reasoning about equivalences between processes (e.g. using bisimulation).
 
   \subsection{Focus}
 
@@ -94,8 +94,8 @@
     \label{fig:coffee_machines}
   \end{figure}
 
-  The two coffee machines in the figures above are trace equivalent but not strongly bisimilar because the resulting states are not related. As an example we can check what happens after inserting a coin. With the first coffee machine we reach state $P2$ and with the second coffee machine we reach either $Q2$ or $Q3$ depending on the choice of beverage.\\
-  So the process of inserting a coin and then either getting a coffee or a tea is the same but the path on how we get there is different.
+  The two coffee machines in \autoref{fig:coffee_machines} are trace equivalent but not strongly bisimilar because the resulting states are not related. As an example we can check what happens after inserting a coin. With the first coffee machine we reach state $P2$ and with the second coffee machine we reach either $Q2$ or $Q3$ depending on the choice of beverage.\\
+  So the process of inserting a coin and then either getting a coffee or a tea is the same but the path and most importantly the sates are different.
 
   \section{µ-Calculus}
   As already mentioned before µ-Calculus is an integral part of $mcrl2$. µ-Calculus is an extension of propositional logic and therefore shares some similiarites. \\
@@ -114,7 +114,7 @@
 
   \subsection{Diamond and Box Modalities}
 
-  Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. In order to show the difference between the two modalities we have four simple LTSs where we take look wheter the box modality or the diamond modality of $a$.
+  Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. In order to show the difference between the two modalities we have four simple LTSs where we take a look whether the box modality or the diamond modality of $a$ is valid.
 
   \resizebox{\textwidth}{!}{
     \newcommand{\valid}{{\color{green} valid}}
@@ -172,18 +172,16 @@
 
   In the first LTS a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are possible. \\
   In the second LTS there is no $a$ action to a state where $\phi$ holds and for that reason both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are not possible. \\
-  In the third LTS there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not holds and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
-  In the fourth LTS there is no $a$ action at all and therefore $\langle{}a\rangle{}\phi$ is not valid because, because there needs to be an $a$ action that can be performed and $[a]\phi$ is valid, since there is no action that can be done.
+  In the third LTS there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not hold and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
+  In the fourth LTS there is no $a$ action at all and for that reason $\langle{}a\rangle{}\phi$ is not valid, because there needs to be an $a$ action that can be performed. However $[a]\phi$ is valid, since there is no action that can be done.
 
   \subsection{Regular Formulae}
 
   In many cases we'd like to allow for more than one single action in a modality and in this case Regular formulas are useful. \\
   An example would be that after two or more arbitrary actions, a specific action must happen or after two receive actions, a send action must follow. \\
-  Regular formulas are based on Action formular. An Action formular is a set of multi action, which is as follows:
+  Regular formulas are based on Action formulas. An Action formula is a set of multi action, which is as follows:
 
   \pagebreak
-  An action formula af defines a set of multi-actions. \\
-
   \begin{align*}
     \mathit{af} ::= \alpha\ |\ \mathit{true}\ |\ \mathit{false}\ |\ \overline{\mathit{af}}\ |\ \mathit{af}\ \cap\ \mathit{af}\ |\ \mathit{af}\ \cup\ \mathit{af}
   \end{align*}
@@ -210,7 +208,7 @@
   As an example we can look at $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$, which means than an action other than $a$ can be done, followed by either $b$ or $c$ \\
   $[\overline{a}]\mathit{false}$ says that only an $a$ action is allowed. \\
 
-  Regular formulae extend action formulae, allowing sequences of actions in modalities.
+  Regular formulae extend action formulae by allowing sequences of actions in modalities.
 
   \begin{align*}
     R ::= \epsilon\ |\ \mathit{af}\ |\ R\cdot{R}\ |\ R+R\ |\ R^*\ |\ R^+
@@ -263,7 +261,7 @@
     \diamond\phi \text{ means that Something good will happen.}
   \end{align*}
 
-  In order to demonstrate the liveness property we have program that sends and receives messages.
+  In order to demonstrate the liveness property we have a program that sends and receives messages.
 
   \begin{align*}
     [\mathit{true}^*\cdot \mathit{send}]\langle \mathit{true}^* \cdot \mathit{receive} \rangle \mathit{true}
