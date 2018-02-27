@@ -5,7 +5,7 @@
 %% The original source files were:
 %%
 %% CLaTeX.dtx  (with options: `cls')
-%% 
+%%
 %% \CheckSum{750}
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -103,7 +103,7 @@
 \renewcommand\appendix{%
 \backmatter
 \phantomsection{\addcontentsline{toc}{section}{\bibname}}
- \bibliographystyle{abbrv}
+ \bibliographystyle{IEEEtran}
  \bibliography{\@bibfile}
  \@OLDappendix
 }

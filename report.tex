@@ -9,8 +9,6 @@
 
 \usepackage{forest}
 
-\bibliographystyle{IEEEtran}
-
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -37,14 +35,14 @@
 
   \subsection{Focus}
 
-  There are various other forms of process calculi like \textit{ACP}, \textit{CCS}, \textit{CSP}, \textit{Join-Calculus}, \textit{$\mu$-Calculus}, \textit{PEPA} or \textit{$\pi$-Calculus}. However we are only going to focus on \textit{ACP} and \textit{$\mu$-Calculus}. Specifically on \textit{$\mu$-Calculus} since it is the core concept of \textit{mCRL2}.
+  There are various forms of process calculi like \textit{ACP}, \textit{CCS}, \textit{CSP}, \textit{Join-Calculus}, \textit{$\mu$-Calculus}, \textit{PEPA} or \textit{$\pi$-Calculus}. However we are only going to focus on \textit{ACP} and \textit{$\mu$-Calculus}. Specifically on \textit{$\mu$-Calculus} since it is the core concept of \textit{mCRL2}.
 
   \section{Labelled Transition Systems}
 
-  A LTS is a directed labelled graph and it consists of a set of state and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
+  An LTS is a directed labelled graph and it consists of a set of states and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
   transitions. If a state has more than one outgoing transition with the same label to different states, then it is non-deterministic.
 
-  A LTS is a tuple $(S, A, \to,s_0>)$ where: \\
+  An LTS is a tuple $(S, A, \to,s_0>)$ where: \\
 
   \begin{itemize}[noitemsep]
     \item $S$ is a set of states \\
@@ -97,7 +95,7 @@
   \end{figure}
 
   The two coffee machines in \autoref{fig:coffee_machines} are trace equivalent but not strongly bisimilar because the resulting states are not related. As an example we can check what happens after inserting a coin. With the first coffee machine we reach state $P2$ and with the second coffee machine we reach either $Q2$ or $Q3$ depending on the choice of beverage.\\
-  So the process of inserting a coin and then either getting a coffee or a tea is the same but the path and most importantly the sates are different.
+  So the process of inserting a coin and then either getting a coffee or a tea is the same but the path and most importantly the states are different.
 
   \section{µ-Calculus}
   As already mentioned before µ-Calculus is an integral part of $mCRL2$. µ-Calculus is an extension of propositional logic and therefore shares some similarities. \\
@@ -181,7 +179,7 @@
 
   In many cases we'd like to allow for more than one single action in a modality and in this case Regular formulas are useful. \\
   An example would be that after two or more arbitrary actions, a specific action must happen or after two receive actions, a send action must follow. \\
-  Regular formulas are based on Action formulas. An Action formula is a set of multi action, which is as follows:
+  Regular formulas are based on Action formulas. An Action formula is a set of multi-actions, which is as follows:
 
   \pagebreak
   \begin{align*}
@@ -207,7 +205,7 @@
     [\mathit{af}]\phi = \bigwedge_{\alpha \in \mathit{af}} [\alpha]\phi
   \end{align*}
 
-  As an example we can look at $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$, which means than an action other than $a$ can be done, followed by either $b$ or $c$ \\
+  As an example we can look at $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$, which means that an action other than $a$ can be done, followed by either $b$ or $c$ \\
   $[\overline{a}]\mathit{false}$ says that only an $a$ action is allowed. \\
 
   Regular formulae extend action formulae by allowing sequences of actions in modalities.
@@ -316,7 +314,7 @@
 
   ACP is the Algebra of Communicating Processes and is used to describe parallel and concurrent processes.
 
-  In ACP, a process is defined \cite{groote2014} as follows:
+  In ACP, a process is defined \cite{acp_wiki} as follows:
 
   \begin{align*}
     P ::= a\ |\ \delta\ |\ \tau\ |\ P + P\ |\ P \cdot P\ |\ (P || P)\ |\ (P |\lfloor P)\ |\ (P | P)\ |\ \tau_I(P)
@@ -329,9 +327,9 @@
   $|\lfloor$ is the left-merge operator, it is the generalized version of $||$ (\textit{merge operator}) and denotes concurrency.
   \\
   \begin{example}
-    $(a \cdot b) |\lfloor (c \cdot b)$ ensures that the left branch is started first, in this case that $a$ occurs first, so only the sequences $abcd$, $acdb$ and $adbc$ are possible.
+    $(a \cdot b) |\lfloor (c \cdot d)$ ensures that the left branch is started first, in this case that $a$ occurs first, so only the sequences $abcd$, $acdb$ and $acbd$ are possible.
 
-    $(a \cdot b) || (c \cdot d)$ is therefore actually an alternative between $(a \cdot b) |\lfloor (c \cdot b)$ and $(c \cdot b) |\lfloor (a \cdot b)$.
+    $(a \cdot b) || (c \cdot d)$ is therefore actually an alternative between $(a \cdot b) |\lfloor (c \cdot d)$ and $(c \cdot d) |\lfloor (a \cdot b)$.
   \end{example}
 
   $|$ is the called the communications operator and is used do pass data between actions.
@@ -355,12 +353,20 @@
   Let's first take a look at the \textbf{mCRL2} syntax for specifying processes. Usually, a process specification file will have a file name of the form \texttt{*.mcrl2}.
 
   \begin{figure}[!ht]
-    \input{listings/mcrl2_syntax}
+    \begin{lstlisting}[language=mCRL2]
+act a, b, c, d, e;
+
+proc P = a . b . c;
+     Q = d + e;
+     R = (a + b) . c . d . e;
+
+init P;
+    \end{lstlisting}
     \caption{The \textbf{mCRL2} process specification syntax.}
     \label{fig:mcrl2_syntax}
   \end{figure}
 
-  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to $a$ in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or processes, if there are more than one. We do this using the \texttt{proc} keywords, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences and action alternatives. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
+  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to atomic actions in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or multiple processes, if there are more than one. We do this using the \texttt{proc} keyword, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences, action alternatives. Processes themselves can also be used on the right-hand side, which is essential for recursion. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
 
   To demonstrate the power of ACP and µ-Calculus in combination with the \textbf{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textbf{mCRL2}.
 
