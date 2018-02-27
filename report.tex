@@ -459,11 +459,11 @@ init Q;
 
   We have now seen how to specify processes and process properties using \textbf{mCRL2}, but we have not yet used any tool provided by it.
 
-  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. We need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into a LPS (Linear Process Specification). We then use \texttt{lps2pbes} to convert the LPS into a PBES (Parametrized Boolean Equation System). Finally, we use \texttt{pbes2bool} to solve the PBES.
+  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. First, we need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into an LPS \cite[Linear Process Specifications]{mcrl2doc}. An LPS is a process specification with a very simple structure, which we can then convert into a so-called PBES \cite[Parametrized Boolean Equation Systems]{mcrl2doc} using \texttt{lps2pbes}. \textbf{mCRL2} can then check wether a given formula holds by solving this set of equations. This is done with the \texttt{pbes2bool} tool.
 
   We will now look at a specific example using our coffee machines.
 
-  We assume the following directory structure:
+  We assume the following directory structure\footnote{You can find all files in the accompanying ZIP archive if you want to try these tools yourself.}:
 
   \begin{forest}
     for tree={
@@ -539,7 +539,9 @@ The solution for the initial variable of the pbes is true
 true
   \end{lstlisting}
 
-  With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite{mcrl2doc} or by using the tools help flag (\texttt{-h}).
+  With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite{mcrl2doc} or by using the tool's help flag (\texttt{-h}).
+
+  In the last line of the output, we can see \texttt{true}. This boolean value represents wether the formula holds. This means that our property \texttt{no\_free\_coffee.mcf} holds for our first coffee machine \texttt{coffee\_machine\_1.mcrl2}
 
   \subsection{LTS}
 
