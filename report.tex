@@ -447,13 +447,13 @@ init Q;
 
   After any valid sequence of actions (\texttt{true*}) which ends with pouring either coffee or tea (\texttt{pour\_tea + pour\_coffee}), inserting a coin is possible.
 
-  Lastly, we define a property which is probably one of the more important one in a real world scenario. Namely that the machine does never give out free coffee or tea.
+  Lastly, we define a property which guarantees that the machine does not allow choosing a beverage without payment.
 
   \begin{lstlisting}[language=mCRL2]
 [!insert_coin* . (choose_tea + choose_coffee)]false
   \end{lstlisting}
 
-  Here we define that any sequence of actions which are not \texttt{insert\_coin}, followed by choosing coffee or tea, is invalid.
+  For that, we define that any sequence of actions which are \textit{not} \texttt{insert\_coin}, followed by choosing coffee or tea, is invalid.
 
   \subsection{Model Checking}
 
