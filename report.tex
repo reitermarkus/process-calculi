@@ -77,7 +77,7 @@
 
   \subsection{Bisimulation}
   Bisimulation is a binary relation between LTSs, where LTSs behave the same way in the sense
-  that one LTS simulates the other and vice versa. \cite{bisimulation_wiki} Bisimulation is not the only form of equivalence. We chose to differentiate between trace equivalence and strong bisimilarity as they are easy to show on an example.
+  that one LTS simulates the other and vice versa. Bisimulation \cite{bisimulation_wiki} is not the only form of equivalence. We will show the difference between trace equivalence and strong bisimilarity as they are easy to show in an example.
 
   \begin{itemize}[noitemsep]
     \item Trace equivalence: \\
@@ -122,7 +122,6 @@
       \newcommand{\invalid}{{\color{red} invalid}}
       \renewcommand{\arraystretch}{2}
       \begin{tabular}{l c c c c}
-
 
         &
 
@@ -544,7 +543,7 @@ The solution for the initial variable of the pbes is true
 true
   \end{lstlisting}
 
-  With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite{mcrl2doc} or by using the tool's help flag (\texttt{-h}).
+  With the appropriate flags, you can manually specify which strategies should be used. These can be found in the documentation \cite[pbes2bool]{mcrl2doc} or by using the tool's help flag (\texttt{-h}).
 
   In the last line of the output, we can see \texttt{true}. This boolean value represents wether the formula holds. This means that our property \texttt{no\_free\_coffee.mcf} holds for our first coffee machine \texttt{coffee\_machine\_1.mcrl2}
 
@@ -594,7 +593,7 @@ lps2lts coffee_machine_2.lps coffee_machine_2.lts
 ltscompare --equivalence=bisim coffee_machine_1.lts coffee_machine_2.lts
   \end{lstlisting}
 
-  Again, all available equivalences can be seen in the tool's help page (\texttt{-h} flag) or in the \texttt{mCRL2} documentation \cite{mcrl2doc}.
+  Again, all available equivalences can be seen in the tool's help page (\texttt{-h} flag) or in the \texttt{mCRL2} documentation \cite[ltscompare]{mcrl2doc}.
 
   From the command, we get the following output:
 
