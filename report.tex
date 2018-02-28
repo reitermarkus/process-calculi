@@ -101,9 +101,10 @@
 
   \section{$\mu$-Calculus}
   As already mentioned before $\mu$-Calculus is an integral part of $mCRL2$. $\mu$-Calculus is an extension of propositional logic and therefore shares some similarities. \\
-  Furthermore it is used to describe and verify properties of LTSs.
+  It is used to describe and verify properties of LTSs.
 
   \subsection{Hennessy-Milner Logic}
+  Hennessy-Milner Logic is a modal logic like LTL or CTL and for this reason we can see some relations. \\
   \begin{align*}
     \phi ::= \mathit{true}\ |\ \mathit{false}\ |\ \neg \phi\ |\ \phi \land \psi\ |\ \phi \lor \psi\ |\ \phi \to \psi\ |\ \langle a \rangle \phi \ |\ [a]\phi
   \end{align*}
@@ -116,7 +117,8 @@
 
   \subsection{Diamond and Box Modalities}
 
-  Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. In order to show the difference between the two modalities we have four simple LTSs where we take a look whether the box modality or the diamond modality of $a$ is valid.
+  Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. We can imagine the diamond modality like a $F$ in LTL and the box modality like a $G$ in LTL. \\
+  In order to show the difference between the two modalities we have four simple LTSs where we take a look whether the box modality or the diamond modality of $a$ is valid.
 
   \begin{figure}[!ht]
    \resizebox{\textwidth}{!}{
