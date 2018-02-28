@@ -585,7 +585,7 @@ lps2lts coffee_machine_1.lps coffee_machine_1.lts
 lps2lts coffee_machine_2.lps coffee_machine_2.lts
   \end{lstlisting}
 
-  Next, we run \texttt{ltscompare} and pass \texttt{--equivalence} to specify which equivalence should be used, in our case \texttt{bisim}.
+  Next, we run \texttt{ltscompare} and pass \texttt{-{}-equivalence} to specify which equivalence should be used, in our case \texttt{bisim}.
 
   \begin{lstlisting}[language=Bash]
 ltscompare --equivalence=bisim coffee_machine_1.lts coffee_machine_2.lts
@@ -599,7 +599,17 @@ ltscompare --equivalence=bisim coffee_machine_1.lts coffee_machine_2.lts
 LTSs are not equal (strong bisimilarity using the O(m log n) algorithm [Groote/Jansen/Keiren/Wijs 2017])
   \end{lstlisting}
 
-  So in fact, the two LTSs are not bisimilar.
+  So in fact, the two LTSs are not bisimilar. We know, however, that they are trace equivalent. We can verify this using the \texttt{trace} option for \texttt{-{}-equivalence}.
+
+  \begin{lstlisting}[language=Bash]
+ltscompare --equivalence=trace coffee_machine_1.lts coffee_machine_2.lts
+  \end{lstlisting}
+
+  And indeed, we get the following output:
+
+  \begin{lstlisting}
+LTSs are equal (strong trace equivalence)
+  \end{lstlisting}
 
   \section{Conclusion}
 

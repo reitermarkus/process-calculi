@@ -20,6 +20,10 @@ graph: $(LTS)
 bisim: $(LTS)
 	ltscompare --equivalence=bisim $^
 
+.PHONY: trace
+trace: $(LTS)
+	ltscompare --equivalence=trace $^
+
 %.coffee_machine_1.pbes: coffee_machine_1.lps
 	lps2pbes -f $(patsubst %.coffee_machine_1.pbes, %.mcf, $@) $^ $@
 
