@@ -40,7 +40,7 @@
   An LTS (Labelled Transition System) is a directed labelled graph and it consists of a set of states and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
   transitions. If a state has more than one outgoing transition with the same label to different states, then it is non-deterministic.
 
-  An LTS is a tuple $(S, A, \to,s_0>)$ where: \\
+  An LTS is a tuple $(S, A, \to,s_0>)$ where:
 
   \begin{itemize}[noitemsep]
     \item $S$ is a set of states \\
@@ -66,7 +66,7 @@
 
   In \autoref{fig:lts1} and \autoref{fig:lts2} you can see examples of two LTSs for alarm clocks. The first alarm clock on the left allows for repeated alarms which can be seen by the loop on top of the alarm state. With the second alarm clock it is only possible to signal the alarm once after it is set.
 
-  Both LTSs are deterministic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS non-deterministic by drawing a loop on top of the alarm state as you can see in \autoref{fig:lts3}. \\
+  Both LTSs are deterministic since no state has more than one outgoing transition with the same label to a different state. However we can make the right LTS (\autoref{fig:lts2}) non-deterministic by drawing a loop on top of the alarm state as you can see in \autoref{fig:lts3}.
 
   \begin{figure}[!ht]
     \centering
@@ -614,11 +614,11 @@ LTSs are equal (strong trace equivalence)
 
   \section{Conclusion}
 
-  In this report we heard about \textit{mCRL2} and integral concepts which it is based on. Specifically we went over Labelled Transition Systems, \textit{ACP}, \textit{$\mu$-Calculus} in greater detail. \\
-  In order to be able to talk about \textit{mCRL2} we tried to show how the different concepts and logics depend on each other and how they relate to \textit{mCRL2}. \\
-  In the final chapter we then proceeded to showcase how we can test Bisimilarity and Trace Equivalence with \textit{mCRL2}.
+  In this report we heard about \textit{mCRL2} and integral concepts which it is based on. Specifically we went over Labelled Transition Systems, \textit{ACP}, \textit{$\mu$-Calculus} in greater detail.
 
-  \backmatter
+  In order to be able to talk about \textit{mCRL2} we tried to show how the different concepts and logics depend on each other and how they relate to \textit{mCRL2}.
+
+  In the final chapter we then proceeded to showcase how we can test Bisimilarity and Trace Equivalence with \textit{mCRL2}.
 
   \phantomsection{\addcontentsline{toc}{section}{\bibname}}
   \printbibliography
