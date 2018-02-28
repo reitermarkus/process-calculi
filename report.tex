@@ -37,11 +37,11 @@
 
   \subsection{Focus}
 
-  There are various forms of process calculi like \textit{ACP}, \textit{CCS}, \textit{CSP}, \textit{Join-Calculus}, \textit{$\mu$-Calculus}, \textit{PEPA} or \textit{$\pi$-Calculus}. However we are only going to focus on \textit{ACP} and \textit{$\mu$-Calculus}. Specifically on \textit{$\mu$-Calculus} since it is the core concept of \textit{mCRL2}.
+  There are various forms of process calculi like \textit{ACP}, \textit{CCS}, \textit{CSP}, \textit{Join-Calculus}, \textit{PEPA} or \textit{$\pi$-Calculus}. However we are only going to focus on \textit{ACP} since it a core concept of \textit{mCRL2}.
 
   \section{Labelled Transition Systems}
 
-  An LTS is a directed labelled graph and it consists of a set of states and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
+  An LTS (Labelled Transition System) is a directed labelled graph and it consists of a set of states and a set of transitions labelled with actions that connect the states. Additionally it must have an initial state. It is also important to note that it will deadlock if a reachable state does not terminate and has no outgoing
   transitions. If a state has more than one outgoing transition with the same label to different states, then it is non-deterministic.
 
   An LTS is a tuple $(S, A, \to,s_0>)$ where: \\
@@ -81,7 +81,7 @@
 
   \subsection{Bisimulation}
   Bisimulation is a binary relation between LTSs, where LTSs behave the same way in the sense
-  that one LTS simulates the other and vice versa. \cite{bisimulation_wiki} Bisimulation is not the only form of equivalence. We can further differentiate between
+  that one LTS simulates the other and vice versa. \cite{bisimulation_wiki} Bisimulation is not the only form of equivalence. We chose to differentiate between trace equivalence and strong bisimilarity as they are easy to show on an example.
 
   \begin{itemize}[noitemsep]
     \item Trace equivalence: \\
