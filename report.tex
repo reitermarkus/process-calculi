@@ -99,8 +99,8 @@
   The two coffee machines in \autoref{fig:coffee_machines} are trace equivalent but not strongly bisimilar because the resulting states are not related. As an example we can check what happens after inserting a coin. With the first coffee machine we reach state $P2$ and with the second coffee machine we reach either $Q2$ or $Q3$ depending on the choice of beverage.\\
   So the process of inserting a coin and then either getting a coffee or a tea is the same but the path and most importantly the states are different.
 
-  \section{µ-Calculus}
-  As already mentioned before µ-Calculus is an integral part of $mCRL2$. µ-Calculus is an extension of propositional logic and therefore shares some similarities. \\
+  \section{$\mu$-Calculus}
+  As already mentioned before $\mu$-Calculus is an integral part of $mCRL2$. $\mu$-Calculus is an extension of propositional logic and therefore shares some similarities. \\
   Furthermore it is used to describe and verify properties of LTSs.
 
   \subsection{Hennessy-Milner Logic}
@@ -348,7 +348,7 @@
 
   \section{mCRL2}
 
-  \textbf{mCRL2} is a toolset which is used for specifying and analysing behaviour of distributed systems and protocols. We chose this tool because it uses an ACP-like syntax for its formal specification language for processes as well as µ-Calculus for model checking.
+  \textbf{mCRL2} is a toolset which is used for specifying and analysing behaviour of distributed systems and protocols. We chose this tool because it uses an ACP-like syntax for its formal specification language for processes as well as $\mu$-Calculus for model checking.
 
   \subsection{Process Specification}
 
@@ -370,7 +370,7 @@ init P;
 
   As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to atomic actions in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or multiple processes, if there are more than one. We do this using the \texttt{proc} keyword, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences, action alternatives. Processes themselves can also be used on the right-hand side, which is essential for recursion. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
 
-  To demonstrate the power of ACP and µ-Calculus in combination with the \textbf{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textbf{mCRL2}.
+  To demonstrate the power of ACP and $\mu$-Calculus in combination with the \textbf{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textbf{mCRL2}.
 
   First, we have to define the actions for coffee machine 1.
 
