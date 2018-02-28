@@ -9,10 +9,12 @@
 
 \usepackage{forest}
 
+\usepackage[T1]{fontenc}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
 \usepackage{caption}
 \usepackage{subcaption}
-
-\bibfile{references}
 
 \title{Process Calculi for Concurrency}
 \author{Markus Reiter and Michael Kaltschmid}
@@ -593,6 +595,8 @@ ltscompare --equivalence=bisim coffee_machine_1.lts coffee_machine_2.lts
 
   \newpage
 
-  \appendix
+  \backmatter
 
+  \phantomsection{\addcontentsline{toc}{section}{\bibname}}
+  \printbibliography
 \end{document}

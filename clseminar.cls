@@ -99,14 +99,6 @@
   }%
  }
 }
-\let\@OLDappendix\appendix
-\renewcommand\appendix{%
-\backmatter
-\phantomsection{\addcontentsline{toc}{section}{\bibname}}
- \bibliographystyle{IEEEtran}
- \bibliography{\@bibfile}
- \@OLDappendix
-}
 \theoremstyle{plain}
 \newtheorem{corollary}{Corollary}[%
 section%
