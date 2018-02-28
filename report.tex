@@ -118,64 +118,78 @@
 
   Although $\langle a \rangle \phi$ - diamond modality and $[a]\phi$ - box modality look somewhat similar, yet they are very different. In order to show the difference between the two modalities we have four simple LTSs where we take a look whether the box modality or the diamond modality of $a$ is valid.
 
-  \resizebox{\textwidth}{!}{
-    \newcommand{\valid}{{\color{green} valid}}
-    \newcommand{\invalid}{{\color{red} invalid}}
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{l c c c c}
-      &
+  \begin{figure}[!ht]
+   \resizebox{\textwidth}{!}{
+      \newcommand{\valid}{{\color{green} valid}}
+      \newcommand{\invalid}{{\color{red} invalid}}
+      \renewcommand{\arraystretch}{2}
+      \begin{tabular}{l c c c c}
 
-      \begin{tikzpicture}
-        \node[vertex] (a) at (0, 1.25) {};
-        \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
 
-        \draw[edge] (0, 1.75) to (a);
-        \draw[edge] (a) to node [left] {$a$} (b);
-      \end{tikzpicture}
+        &
 
-      &
+        \subcaptionbox{\label{fig:lts_a}}{
+          \begin{tikzpicture}
+            \node[vertex] (a) at (0, 1.25) {};
+            \node[vertex] [label=right:{$\phi$}] (b) at (0, 0) {};
 
-      \begin{tikzpicture}
-        \node[vertex] (a) at (0, 1.25) {};
-        \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
+            \draw[edge] (0, 1.75) to (a);
+            \draw[edge] (a) to node [left] {$a$} (b);
+          \end{tikzpicture}
+        }
 
-        \draw[edge] (0, 1.75) to (a);
-        \draw[edge] (a) to node [left] {$a$} (b);
-      \end{tikzpicture}
+        &
 
-      &
+        \subcaptionbox{\label{fig:lts_b}}{
+          \begin{tikzpicture}
+            \node[vertex] (a) at (0, 1.25) {};
+            \node[vertex] [label=right:{$\neg\phi$}] (b) at (0, 0) {};
 
-      \begin{tikzpicture}
-        \node[vertex] (a) at (0.75, 1.25) {};
-        \node[vertex] [label=left:{$\phi$}] (b) at (0, 0) {};
-        \node[vertex] [label=right:{$\neg\phi$}] (c) at (1.5, 0) {};
+            \draw[edge] (0, 1.75) to (a);
+            \draw[edge] (a) to node [left] {$a$} (b);
+          \end{tikzpicture}
+        }
 
-        \draw[edge] (.75, 1.75) to (a);
-        \draw[edge] (a) to node [left] {$a$} (b);
-        \draw[edge] (a) to node [right] {$a$} (c);
-      \end{tikzpicture}
+        &
 
-      &
+        \subcaptionbox{\label{fig:lts_c}}{
+          \begin{tikzpicture}
+            \node[vertex] (a) at (0.75, 1.25) {};
+            \node[vertex] [label=left:{$\phi$}] (b) at (0, 0) {};
+            \node[vertex] [label=right:{$\neg\phi$}] (c) at (1.5, 0) {};
 
-      \begin{tikzpicture}
-        \node[vertex] (a) at (0, 1.25) {};
-        \node at (0, -0.175) {};
+            \draw[edge] (.75, 1.75) to (a);
+            \draw[edge] (a) to node [left] {$a$} (b);
+            \draw[edge] (a) to node [right] {$a$} (c);
+          \end{tikzpicture}
+        }
 
-        \draw[edge] (0, 1.75) to (a);
-      \end{tikzpicture}
+        &
 
-      \\
+        \subcaptionbox{\label{fig:lts_d}}{
+          \begin{tikzpicture}
+            \node[vertex] (a) at (0, 1.25) {};
+            \node at (0, -0.175) {};
 
-      $\langle{}a\rangle{}\phi$ & \valid & \invalid & \valid & \invalid \\
+            \draw[edge] (0, 1.75) to (a);
+          \end{tikzpicture}
+        }
 
-      $[a]\phi$                 & \valid & \invalid & \invalid &  \valid \\
-    \end{tabular}
-  }\\[6pt]
+        \\
 
-  In the first LTS a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are possible. \\
-  In the second LTS there is no $a$ action to a state where $\phi$ holds and for that reason both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are not possible. \\
-  In the third LTS there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not hold and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
-  In the fourth LTS there is no $a$ action at all and for that reason $\langle{}a\rangle{}\phi$ is not valid, because there needs to be an $a$ action that can be performed. However $[a]\phi$ is valid, since there is no action that can be done.
+        $\langle{}a\rangle{}\phi$ & \valid & \invalid & \valid & \invalid \\
+
+        $[a]\phi$                 & \valid & \invalid & \invalid &  \valid \\
+      \end{tabular}
+    }
+    \caption{Four LTSs.}
+    \label{fig:modalities}
+  \end{figure}
+
+  In the first LTS (\autoref{fig:lts_a}) a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are possible. \\
+  In the second LTS (\autoref{fig:lts_b}) there is no $a$ action to a state where $\phi$ holds and for that reason both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are not possible. \\
+  In the third LTS (\autoref{fig:lts_c}) there is no $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not hold and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
+  In the fourth LTS (\autoref{fig:lts_d}) there is no $a$ action at all and for that reason $\langle{}a\rangle{}\phi$ is not valid, because there needs to be an $a$ action that can be performed. However $[a]\phi$ is valid, since there is no action that can be done.
 
   \subsection{Regular Formulae}
 
