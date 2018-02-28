@@ -215,17 +215,6 @@
   The modal formula $\langle true \rangle \langle a \rangle true$ expresses that an arbitrary action followed by an action a can be performed. \\
   The formula $[true]false$ expresses that no action can be done.
 
-  $\mathit{af}$ being a set of multi-actions, modalities with action formulae are defined like this:
-
-  \begin{align*}
-    \langle{\mathit{af}}\rangle\phi = \bigvee_{\alpha \in \mathit{af}} \langle\alpha\rangle\phi
-    \qquad\qquad
-    [\mathit{af}]\phi = \bigwedge_{\alpha \in \mathit{af}} [\alpha]\phi
-  \end{align*}
-
-  As an example we can look at $\langle\overline{a}\rangle\langle{b \cup c}\rangle\mathit{true}$, which means that an action other than $a$ can be done, followed by either $b$ or $c$ \\
-  $[\overline{a}]\mathit{false}$ says that only an $a$ action is allowed. \\
-
   Regular formulae extend action formulae by allowing sequences of actions in modalities.
 
   \begin{align*}
