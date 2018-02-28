@@ -355,11 +355,11 @@
 
   \section{mCRL2}
 
-  \textbf{mCRL2} is a toolset which is used for specifying and analysing behaviour of distributed systems and protocols. We chose this tool because it uses an ACP-like syntax for its formal specification language for processes as well as $\mu$-Calculus for model checking.
+  \textit{mCRL2} is a toolset which is used for specifying and analysing behaviour of distributed systems and protocols. We chose this tool because it uses an ACP-like syntax for its formal specification language for processes as well as $\mu$-Calculus for model checking.
 
   \subsection{Process Specification}
 
-  Let's first take a look at the \textbf{mCRL2} syntax for specifying processes. Usually, a process specification file will have a file name of the form \texttt{*.mcrl2}.
+  Let's first take a look at the \textit{mCRL2} syntax for specifying processes. Usually, a process specification file will have a file name of the form \texttt{*.mcrl2}.
 
   \begin{figure}[!ht]
     \begin{lstlisting}[language=mCRL2]
@@ -371,13 +371,13 @@ proc P = a . b . c;
 
 init P;
     \end{lstlisting}
-    \caption{The \textbf{mCRL2} process specification syntax.}
+    \caption{The \textit{mCRL2} process specification syntax.}
     \label{fig:mcrl2_syntax}
   \end{figure}
 
-  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to atomic actions in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or multiple processes, if there are more than one. We do this using the \texttt{proc} keyword, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences, action alternatives. Processes themselves can also be used on the right-hand side, which is essential for recursion. In \textbf{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
+  As you can see in the first line in \autoref{fig:mcrl2_syntax}, we specify all available actions using the \texttt{act} keyword. This relates to atomic actions in the ACP syntax. Now that we have defined the actions, we can specify the process itself, or multiple processes, if there are more than one. We do this using the \texttt{proc} keyword, followed by the name of the process. In \autoref{fig:mcrl2_syntax} we have three processes, \texttt{P}, \texttt{Q} and \texttt{R}. We then equate every process with a combination of actions, action sequences, action alternatives. Processes themselves can also be used on the right-hand side, which is essential for recursion. In \textit{mCRL2}, we use \texttt{.} to denote a sequence and \texttt{+} to denote an alternative. This means that process \texttt{P} is a sequence of actions \texttt{a}, \texttt{b} and \texttt{c}. Process \texttt{Q} is a choice between either action \texttt{d} or action \texttt{e}. And finally, process \texttt{R} is a choice between action \texttt{a} and \texttt{b}, followed by \texttt{c}, \texttt{d} and \texttt{e}. Note the parentheses around \texttt{a + b}, since \texttt{.} binds stronger than \texttt{+}. Finally, the \texttt{init} keyword specifies the starting process, in this case \texttt{P}.
 
-  To demonstrate the power of ACP and $\mu$-Calculus in combination with the \textbf{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textbf{mCRL2}.
+  To demonstrate the power of ACP and $\mu$-Calculus in combination with the \textit{mCRL2} toolset, we will now look at an implementation of the two coffee machines (\autoref{fig:coffee_machines}) in \textit{mCRL2}.
 
   First, we have to define the actions for coffee machine 1.
 
@@ -432,7 +432,7 @@ init Q;
 
   Now that we have specified the processes for two coffee machines, we want to define some properties they adhere to.
 
-  In \textbf{mCRL2}, these properties are defined in \texttt{*.mcf} (\textbf{m}odel \textbf{c}hecking \textbf{f}ormula) files and expressed by regular formulae.
+  In \textit{mCRL2}, these properties are defined in \texttt{*.mcf} (\textbf{m}odel \textbf{c}hecking \textbf{f}ormula) files and expressed by regular formulae.
 
   We start with a simple property: The machine does only pour coffee after coffee is chosen. For this, we use a box modality which is false if any sequence of actions that are not \texttt{choose\_coffee} is followed by \texttt{pour\_coffee}.
 
@@ -440,7 +440,7 @@ init Q;
 [!choose_coffee* . pour_coffee]false
   \end{lstlisting}
 
-  The \textbf{mCRL2} syntax for formulae uses \texttt{[} and \texttt{]} for box modalities.
+  The \textit{mCRL2} syntax for formulae uses \texttt{[} and \texttt{]} for box modalities.
 
   The second property is the counterpart to the first. The machine should only pour tea if in fact we chose tea.
 
@@ -466,9 +466,9 @@ init Q;
 
   \subsection{Model Checking}
 
-  We have now seen how to specify processes and process properties using \textbf{mCRL2}, but we have not yet used any tool provided by it.
+  We have now seen how to specify processes and process properties using \textit{mCRL2}, but we have not yet used any tool provided by it.
 
-  For model checking we need three tools, which are provided by \textbf{mCRL2} as command line utilities. First, we need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into an LPS \cite[Linear Process Specifications]{mcrl2doc}. An LPS is a process specification with a very simple structure, which we can then convert into a so-called PBES \cite[Parametrized Boolean Equation Systems]{mcrl2doc} using \texttt{lps2pbes}. \textbf{mCRL2} can then check wether a given formula holds by solving this set of equations. This is done with the \texttt{pbes2bool} tool.
+  For model checking we need three tools, which are provided by \textit{mCRL2} as command line utilities. First, we need \texttt{mcrl22lps} to convert our \texttt{*.mcrl2} process specification into an LPS \cite[Linear Process Specifications]{mcrl2doc}. An LPS is a process specification with a very simple structure, which we can then convert into a so-called PBES \cite[Parametrized Boolean Equation Systems]{mcrl2doc} using \texttt{lps2pbes}. \textit{mCRL2} can then check wether a given formula holds by solving this set of equations. This is done with the \texttt{pbes2bool} tool.
 
   We will now look at a specific example using our coffee machines.
 
