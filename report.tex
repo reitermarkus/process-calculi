@@ -186,9 +186,9 @@
     \label{fig:modalities}
   \end{figure}
 
-  In the first LTS (\autoref{fig:lts_a}) a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are possible. \\
-  In the second LTS (\autoref{fig:lts_b}) there is no $a$ action to a state where $\phi$ holds and for that reason both $\langle{}a\rangle{}\phi$ and $[a]\phi$ are not possible. \\
-  In the third LTS (\autoref{fig:lts_c}) there is an $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not hold and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$ and $[a]\phi$ is not valid because not every $a$ action results in a valid $[a]\phi$. \\
+  In the first LTS (\autoref{fig:lts_a}) a $a$ action is possible to a state where $\phi$ holds and therefore both $\langle{}a\rangle{}\phi$ and $[a]\phi$ hold in the initial state. \\
+  In the second LTS (\autoref{fig:lts_b}) there is no $a$ action to a state where $\phi$ holds and for that reason neither $\langle{}a\rangle{}\phi$ nor $[a]\phi$ hold in the initial state. \\
+  In the third LTS (\autoref{fig:lts_c}) there is an $a$ action to a state where $\phi$ holds and an $a$ action to a state where $\phi$ does not hold and therefore $\langle{}a\rangle{}\phi$ is valid since there is at least one $a$ action that leads to a valid $\phi$. $[a]\phi$ is invalid because not every $a$ action leads to $\phi$. \\
   In the fourth LTS (\autoref{fig:lts_d}) there is no $a$ action at all and for that reason $\langle{}a\rangle{}\phi$ is not valid, because there needs to be an $a$ action that can be performed. However $[a]\phi$ is valid, since there is no action that can be done.
 
   \subsection{Regular Formulae}
@@ -321,7 +321,6 @@
     \end{tikzpicture}
   \end{center}
 
-  \\
   \begin{example}
     The first question is if $\mu X. \langle a \rangle X$ and $\nu X. \langle a \rangle X$ hold for the state $s$. \\
     The states in question are the empty set $X = \emptyset$ and the set of all states $X = \{s\}$. \\
